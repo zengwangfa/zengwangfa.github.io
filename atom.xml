@@ -5,9 +5,9 @@
   <subtitle>淹死的鱼</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://zengwangfa.github.io/"/>
-  <updated>2019-12-22T15:20:17.356Z</updated>
-  <id>http://zengwangfa.github.io/</id>
+  <link href="https://zengwangfa.github.io/"/>
+  <updated>2019-12-24T09:11:44.315Z</updated>
+  <id>https://zengwangfa.github.io/</id>
   
   <author>
     <name>淹死的鱼</name>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://zengwangfa.github.io/2019/12/22/hello-world/"/>
-    <id>http://zengwangfa.github.io/2019/12/22/hello-world/</id>
-    <published>2019-12-22T15:20:17.356Z</published>
-    <updated>2019-12-22T15:20:17.356Z</updated>
+    <title>DJI大疆嵌入式2020秋招记录</title>
+    <link href="https://zengwangfa.github.io/2019/10/01/dji-offer/"/>
+    <id>https://zengwangfa.github.io/2019/10/01/dji-offer/</id>
+    <published>2019-10-01T08:13:27.000Z</published>
+    <updated>2019-12-24T09:11:44.315Z</updated>
     
     <summary type="html">
     
@@ -29,13 +29,76 @@
       
         
         
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+          &lt;blockquote&gt;
+&lt;p&gt;写在前面的话：2020秋招形式严峻，此间过程也是十分心酸，能拿到理想的offer，也是十分幸运，希望“疆”来继续up~。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-投递简历&quot;&gt;&lt;a href=&quot;#1-投递简历&quot;
         
       
     
     </summary>
     
     
+      <category term="记录" scheme="https://zengwangfa.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="记录" scheme="https://zengwangfa.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello Hexo</title>
+    <link href="https://zengwangfa.github.io/2019/07/24/hello-world/"/>
+    <id>https://zengwangfa.github.io/2019/07/24/hello-world/</id>
+    <published>2019-07-24T10:55:21.000Z</published>
+    <updated>2019-12-24T09:04:05.318Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-参考资源&quot;&gt;&lt;a href=&quot;#1-参考资源&quot; class=&quot;headerlink&quot; title=&quot;1.参考资源&quot;&gt;&lt;/a&gt;1.参考资源&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/hexojs/hexo&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="博客" scheme="https://zengwangfa.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="note" scheme="https://zengwangfa.github.io/tags/note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>观想之宙</title>
+    <link href="https://zengwangfa.github.io/2019/06/28/the-three-body-problem-x/"/>
+    <id>https://zengwangfa.github.io/2019/06/28/the-three-body-problem-x/</id>
+    <published>2019-06-28T13:15:19.000Z</published>
+    <updated>2019-12-24T09:22:40.870Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;我看到了我的爱恋&lt;br&gt;我飞到她的身边&lt;br&gt;我捧出给她的礼物&lt;br&gt;那是一小块凝固的时间&lt;br&gt;时间上有美丽的条纹&lt;br&gt;摸起来像浅海的泥一样柔软&lt;br&gt;她把时间涂满全身&lt;br&gt;然后拉起我飞向存在的边缘&lt;br&gt;这是灵态的飞行&lt;br&gt;我们眼中的星星
+        
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="https://zengwangfa.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="read" scheme="https://zengwangfa.github.io/tags/read/"/>
     
   </entry>
   

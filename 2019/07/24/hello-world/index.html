@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 淹死的鱼">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="Hello Hexo, 淹死的鱼">
+    <meta name="description" content="Hexo博客搭建过程记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | 淹死的鱼</title>
+    <title>Hello Hexo | 淹死的鱼</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,12 +304,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">Hello Hexo</h1>
                 </div>
             </div>
         </div>
@@ -424,12 +424,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/note/">
+                                <span class="chip bg-color">note</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                博客
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -438,7 +451,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-22
+                    2019-07-24
                 </div>
                 
 
@@ -455,15 +468,70 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
+                <h2 id="1-参考资源"><a href="#1-参考资源" class="headerlink" title="1.参考资源"></a>1.参考资源</h2><ul>
+<li><a href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">Github Hexo</a></li>
+<li><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo 官网</a></li>
+</ul>
+<h2 id="2-安装软件"><a href="#2-安装软件" class="headerlink" title="2.安装软件"></a>2.安装软件</h2><h3 id="2-1-Windows"><a href="#2-1-Windows" class="headerlink" title="2.1 Windows"></a>2.1 Windows</h3><ul>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git下载官网</a></li>
+<li><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">nodejs下载官网</a></li>
+</ul>
+<h3 id="2-2-Linux"><a href="#2-2-Linux" class="headerlink" title="2.2 Linux"></a>2.2 Linux</h3><ul>
+<li><code>git</code></li>
+</ul>
+<pre><code>sudo apt-get install git</code></pre><ul>
+<li><code>Nodejs</code></li>
+</ul>
+<pre><code>sudo apt-get install nodejs</code></pre><blockquote>
+<p>安装完成,查看版本号,可检查是否安装成功</p>
+</blockquote>
+<ul>
+<li><code>node -v</code></li>
+<li><code>npm -v</code></li>
+</ul>
+<h2 id="3-安装Hexo"><a href="#3-安装Hexo" class="headerlink" title="3.安装Hexo"></a>3.安装Hexo</h2><blockquote>
+<p>以下命令都在<code>git bash</code>中输入运行</p>
+</blockquote>
+<ul>
+<li>cd至需要创建的文件夹blog下，安装Hexo（Windows在<code>git bash</code>窗口中输入）</li>
+</ul>
+<pre><code>npm install -g hexo-cli  </code></pre><h2 id="4-快速创建"><a href="#4-快速创建" class="headerlink" title="4.快速创建"></a>4.快速创建</h2><h3 id="4-1-初始化博客"><a href="#4-1-初始化博客" class="headerlink" title="4.1 初始化博客"></a>4.1 初始化博客</h3><pre><code>hexo init blog</code></pre><ul>
+<li>切换至博客目录</li>
+</ul>
+<pre><code>cd blog</code></pre><h3 id="4-2-创建文章"><a href="#4-2-创建文章" class="headerlink" title="4.2 创建文章"></a>4.2 创建文章</h3><pre><code>hexo new "Hello Hexo"</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="4-3-生成静态文章"><a href="#4-3-生成静态文章" class="headerlink" title="4.3 生成静态文章"></a>4.3 生成静态文章</h3><pre><code>hexo generate</code></pre><ul>
+<li>可简写为<code>hexo g</code></li>
+</ul>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h3 id="4-4-启动服务"><a href="#4-4-启动服务" class="headerlink" title="4.4 启动服务"></a>4.4 启动服务</h3><blockquote>
+<p>在预览时才需要用】启动hexo,会生成本地连接:localhost:4000<br>如果4000端口被占用可以用：hexo server -p 5000(指定端口5000)</p>
+</blockquote>
+<pre><code>hexo server</code></pre><ul>
+<li>可简写为<code>hexo s</code><br>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></li>
+</ul>
+<h3 id="4-5-部署文章"><a href="#4-5-部署文章" class="headerlink" title="4.5 部署文章"></a>4.5 部署文章</h3><pre class=" language-c"><code class="language-c">hexo deploy</code></pre>
+<ul>
+<li>可简写为<code>hexo d</code><br>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></li>
+</ul>
+<h2 id="5-更换主题"><a href="#5-更换主题" class="headerlink" title="5.更换主题"></a>5.更换主题</h2><h3 id="5-1-下载"><a href="#5-1-下载" class="headerlink" title="5.1 下载"></a>5.1 下载</h3><p>点击不同的主题的代码，将其文件夹复制到你 Hexo 的 themes 文件夹中即可<br><strong>推荐的主题：</strong></p>
+<ul>
+<li><a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener">matery</a></li>
+<li><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">yilia</a></li>
+</ul>
+<h3 id="5-2-更换主题"><a href="#5-2-更换主题" class="headerlink" title="5.2 更换主题"></a>5.2 更换主题</h3><blockquote>
+<p>初始化默认主题为landscape</p>
+</blockquote>
+<p>切换主题修改 Hexo 根目录下的 <code>_config.yml</code> 的 <code>theme</code> 的值：theme: <code>hexo-theme-matery</code></p>
+<p><code>_config.yml</code>文件的其它修改建议:</p>
+<ul>
+<li>请修改 _config.yml 的 url 的值为你的网站主 URL（如：<a href="http://xxx.github.io）" target="_blank" rel="noopener">http://xxx.github.io）</a></li>
+<li>建议修改两个 per_page 的分页条数值为 6 的倍数，如：12、18 等，这样文章列表在各个屏幕下都能较好的显示</li>
+<li>如果你是中文用户，则建议修改 language 的值为 zh-CN</li>
+</ul>
+<h2 id="6-绑定域名CNAME"><a href="#6-绑定域名CNAME" class="headerlink" title="6.绑定域名CNAME"></a>6.绑定域名CNAME</h2><ul>
+<li>当你点击保存的时候 Github Pages 会自动帮你生成一个 CNAME 的文件在根目录，里面的内容就是你绑定的域名地址</li>
+</ul>
+<p><img src="http://q2lxl3ulw.bkt.clouddn.com/ian-blog-images/CNAME.png" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -497,7 +565,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://zengwangfa.github.io" rel="external nofollow noreferrer">淹死的鱼</a>
+                    <a href="https://zengwangfa.github.io" rel="external nofollow noreferrer">淹死的鱼</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -507,7 +575,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://zengwangfa.github.io/2019/12/22/hello-world/">http://zengwangfa.github.io/2019/12/22/hello-world/</a>
+                    <a href="https://zengwangfa.github.io/2019/07/24/hello-world/">https://zengwangfa.github.io/2019/07/24/hello-world/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -520,7 +588,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="http://zengwangfa.github.io" target="_blank">淹死的鱼</a>
+                    <a href="https://zengwangfa.github.io" target="_blank">淹死的鱼</a>
                     !
                 </span>
             </div>
@@ -544,7 +612,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/note/">
+                                    <span class="chip bg-color">note</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -708,39 +780,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/12/22/hello-world/">
+                <a href="/2019/10/01/dji-offer/">
                     <div class="card-image">
                         
+                        <img src="http://q2lxl3ulw.bkt.clouddn.com/ian-blog-images/DJI_offer1.png" class="responsive-img" alt="DJI大疆嵌入式2020秋招记录">
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">DJI大疆嵌入式2020秋招记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            2020大疆秋招嵌入式完整流程整理
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-22
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-01
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            淹死的鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    记录
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%B0%E5%BD%95/">
+                        <span class="chip bg-color">记录</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -748,37 +829,48 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/22/hello-world/">
+                <a href="/2019/06/28/the-three-body-problem-x/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="观想之宙">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">观想之宙</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            观想之宙阅读记录
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-06-28
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            淹死的鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    记录
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/read/">
+                        <span class="chip bg-color">read</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -919,7 +1011,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2019</span>
-            <a href="http://zengwangfa.github.io" target="_blank">淹死的鱼</a>
+            <a href="https://zengwangfa.github.io" target="_blank">淹死的鱼</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
