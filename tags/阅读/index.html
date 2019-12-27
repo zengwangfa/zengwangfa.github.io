@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="标签: note, 淹死的鱼">
-    <meta name="description" content="标签: note | 淹死的鱼">
+    <meta name="keywords" content="标签: 阅读, 淹死的鱼">
+    <meta name="description" content="标签: 阅读 | 淹死的鱼">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>标签: note | 淹死的鱼</title>
+    <title>标签: 阅读 | 淹死的鱼</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -354,10 +354,10 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/note/" title="note: 1">
+                <a href="/tags/%E7%AC%94%E8%AE%B0/" title="笔记: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="note" style="background-color: #F9EBEA;">note
+                             chip-default "
+                            data-tagname="笔记" style="background-color: #F9EBEA;">笔记
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -372,10 +372,10 @@
                 </a>
                 
                 
-                <a href="/tags/read/" title="read: 1">
+                <a href="/tags/%E9%98%85%E8%AF%BB/" title="阅读: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="read" style="background-color: #D5F5E3;">read
+                             chip-active "
+                            data-tagname="阅读" style="background-color: #D5F5E3;">阅读
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -391,28 +391,27 @@
         <div class="row tags-posts">
             
             
-            <div class="article tag-post col s12 m6 l4" data-tags="note" data-aos="fade-up">
+            <div class="article tag-post col s12 m6 l4" data-tags="阅读" data-aos="fade-up">
                 <div class="card">
-                    <a href="/2019/07/24/hello-world/">
+                    <a href="/2019/06/28/the-three-body-problem-x/">
                         <div class="card-image tag-image">
                             
+                            <img src="http://q2lxl3ulw.bkt.clouddn.com/ian-blog-images/galaxy.jpg" class="responsive-img" alt="观想之宙">
                             
-                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Hello Hexo">
-                            
-                            <span class="card-title">Hello Hexo</span>
+                            <span class="card-title">观想之宙</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-06-28
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                博客
+                                <a href="/categories/%E9%98%85%E8%AF%BB/" class="post-category">
+                                阅读
                                 </a>
                                 
                                 
@@ -430,7 +429,7 @@
 
 
     <footer class="page-footer bg-color">
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2019</span>
@@ -438,6 +437,9 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">4.3k</span>&nbsp;字
             
             
             
@@ -457,17 +459,61 @@
             
             <br>
             
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "7";
+                    var startDate = "28";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
             <br>
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/zengwangfa" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:zengwangfa@outlook.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -477,7 +523,7 @@
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=508293391" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 508293391" data-position="top" data-delay="50">
         <i class="fab fa-qq"></i>
     </a>
 
