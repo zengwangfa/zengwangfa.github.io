@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zengwangfa.github.io/"/>
-  <updated>2019-12-27T07:07:30.761Z</updated>
+  <updated>2019-12-28T14:25:54.930Z</updated>
   <id>https://zengwangfa.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实用的在线网站</title>
+    <link href="https://zengwangfa.github.io/2019/12/25/websites/"/>
+    <id>https://zengwangfa.github.io/2019/12/25/websites/</id>
+    <published>2019-12-25T13:48:26.000Z</published>
+    <updated>2019-12-28T14:25:54.930Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;http://q2lxl3ulw.bkt.clouddn.com/ian-blog-images/web_logo.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;学习类&quot;&gt;&lt;a href=&quot;#学习类&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="https://zengwangfa.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="效率工具" scheme="https://zengwangfa.github.io/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>DJI大疆嵌入式2020秋招记录</title>
