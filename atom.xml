@@ -50,7 +50,7 @@
     <link href="https://zengwangfa.top/2019/12/27/s3c2440-nand/"/>
     <id>https://zengwangfa.top/2019/12/27/s3c2440-nand/</id>
     <published>2019-12-27T12:39:46.000Z</published>
-    <updated>2020-01-04T13:50:45.805Z</updated>
+    <updated>2020-01-04T13:51:45.358Z</updated>
     
     <summary type="html">
     
@@ -182,6 +182,60 @@
     
     
       <category term="阅读" scheme="https://zengwangfa.top/tags/%E9%98%85%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MJPG-Streamer推流测试</title>
+    <link href="https://zengwangfa.top/2018/12/02/raspberry-mjpg/"/>
+    <id>https://zengwangfa.top/2018/12/02/raspberry-mjpg/</id>
+    <published>2018-12-02T08:17:57.000Z</published>
+    <updated>2020-01-04T15:10:22.116Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://github.com/jacksonliam/mjpg-streamer&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;mjpg-streamer
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Raspberry Pi" scheme="https://zengwangfa.top/categories/Raspberry-Pi/"/>
+    
+    
+      <category term="MJPG" scheme="https://zengwangfa.top/tags/MJPG/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSI摄像头推流</title>
+    <link href="https://zengwangfa.top/2018/11/28/raspberry-raspivid/"/>
+    <id>https://zengwangfa.top/2018/11/28/raspberry-raspivid/</id>
+    <published>2018-11-28T12:16:08.000Z</published>
+    <updated>2020-01-04T15:11:57.980Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://github.com/jacksonliam/mjpg-streamer&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;mjpg-streamer
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Raspberry Pi" scheme="https://zengwangfa.top/categories/Raspberry-Pi/"/>
+    
+    
+      <category term="Raspivid" scheme="https://zengwangfa.top/tags/Raspivid/"/>
     
   </entry>
   
