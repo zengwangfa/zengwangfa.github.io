@@ -1,0 +1,1636 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Nand Flash编程, 淹死的鱼">
+    <meta name="description" content="S3C2440 Nand Flash编程">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Nand Flash编程 | 淹死的鱼</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="淹死的鱼" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">淹死的鱼</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">淹死的鱼</div>
+        <div class="logo-desc">
+            
+            最是难解少年梦 黄粱一转又浮空
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/zengwangfa" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/zengwangfa" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://q3996b08i.bkt.clouddn.com/embedded-study/img_cirtuit.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Nand Flash编程</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/ARM9/">
+                                <span class="chip bg-color">ARM9</span>
+                            </a>
+                        
+                            <a href="/tags/Nand/">
+                                <span class="chip bg-color">Nand</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/S3C2440/" class="post-category">
+                                S3C2440
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-12-27
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-01-04
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    13 分
+                </div>
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-读芯片ID"><a href="#1-读芯片ID" class="headerlink" title="1.读芯片ID"></a>1.读芯片ID</h2><h3 id="1-1-读芯片ID时序"><a href="#1-1-读芯片ID时序" class="headerlink" title="1.1 读芯片ID时序"></a>1.1 读芯片ID时序</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_timing.png" alt=""></p>
+<p> 简化为4个步骤：</p>
+<ul>
+<li><p>1.使能片选</p>
+</li>
+<li><p>2.写命令0x90</p>
+</li>
+<li><p>3.写地址0x00</p>
+</li>
+<li><p>4.读ID信息</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 识别NAND FLASH */</span>
+<span class="token keyword">void</span> <span class="token function">scan_nand_flash</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+ <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+ <span class="token comment" spellcheck="true">//保存读取ID信息的数组</span>
+ <span class="token keyword">unsigned</span> <span class="token keyword">char</span> id_info<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+ <span class="token function">nand_enable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//使能CS</span>
+ <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x90</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token function">nand_write_addr</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+     id_info<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">nand_read_data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+ <span class="token function">nand_disable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//禁止CS</span>
+
+ <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Maker  Code: 0x%x\r\n"</span><span class="token punctuation">,</span>id_info<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Device Code: 0x%x\r\n"</span><span class="token punctuation">,</span>id_info<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"3rd   cycle: 0x%x\n\r"</span><span class="token punctuation">,</span>id_info<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Page   size: %d KB\n\r"</span><span class="token punctuation">,</span><span class="token number">1</span>  <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span>id_info<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">&amp;</span> <span class="token number">0x03</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//页大小与id_info[3]最低2位有关</span>
+ <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Block  size: %d KB\n\r"</span><span class="token punctuation">,</span><span class="token number">64</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>id_info<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">>></span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0x03</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//块大小与id_info[3]第4、5位有关</span>
+
+ <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"5th   cycle: 0x%x\n\r"</span><span class="token punctuation">,</span>id_info<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="1-2-由ID数据获得芯片参数"><a href="#1-2-由ID数据获得芯片参数" class="headerlink" title="1.2 由ID数据获得芯片参数"></a>1.2 由ID数据获得芯片参数</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_scan_test.png" alt=""></p>
+</li>
+</ul>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_chip_params.png" alt=""></p>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_scan_test2.png" alt=""></p>
+<ul>
+<li>ID信息的第4字节为<code>0x95</code></li>
+<li>页大小与id_info[3]最低2位有关，可得<strong>页大小</strong>为：<code>2KB</code></li>
+<li>块大小与id_info[3]第4、5位有关，可得<strong>块大小</strong>为：<code>128KB</code></li>
+</ul>
+<blockquote>
+<p>注意：如果此时烧写到Nand Flash，并从Nand Flash启动程序是不会成功的，因为这个bin文件大小已经超过了4K，且现在还没有实现nand flash的读函数。</p>
+</blockquote>
+<h2 id="2-读数据"><a href="#2-读数据" class="headerlink" title="2.读数据"></a>2.读数据</h2><blockquote>
+<p>目标：实现从NAND FLASH中启动，重定位所有数据至SDRAM，并实现读取芯片ID数据</p>
+</blockquote>
+<h3 id="2-1-NAND内部结构分析"><a href="#2-1-NAND内部结构分析" class="headerlink" title="2.1 NAND内部结构分析"></a>2.1 NAND内部结构分析</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_struct.png" alt=""></p>
+<ul>
+<li>OOB：out of bank（在bank之外）<br>由上图可得：</li>
+<li>1Page = 2KB + 64B</li>
+<li>1Block = 64 * Pages = 128KB + 4KB</li>
+<li>1Device = 2048 * Blocks = 256MB + 8MB</li>
+</ul>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_data_store.png" alt=""></p>
+<ul>
+<li>OOB区的作用：因为nand的缺点是会发生<code>“位反转”</code>，为了解决这个问题，nand中的OOB区，<strong>用于校验数据区的数据是否发生错误</strong>，当有错误时，可以恢复数据。（其本身不存储数据）</li>
+<li>因为OOB中并不存放数据，只是用于校验数据区是否发生错误，因此当CPU读取Nand Flash<strong>第2048</strong>个数据，该数据为 <code>Page1中的第0个byte</code></li>
+</ul>
+<h3 id="2-2-地址序列与时序"><a href="#2-2-地址序列与时序" class="headerlink" title="2.2 地址序列与时序"></a>2.2 地址序列与时序</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_addr.png" alt=""></p>
+<ul>
+<li>由地址序列可以看出：发出地址信号共需5个周期，前2个周期发出列地址（Column Address），后3个周期发出行地址（Row Address）</li>
+<li>地址线序列有一些位是没有用到的，其目的也是以后兼容更大芯片的nand falsh<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_read_timing.png" alt=""></li>
+</ul>
+<blockquote>
+<p>Nand Flash内部结构展开大致如下：<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_struct2.png" alt=""></p>
+</blockquote>
+<h3 id="2-3-读数据流程"><a href="#2-3-读数据流程" class="headerlink" title="2.3 读数据流程"></a>2.3 读数据流程</h3><ul>
+<li>1.发出片选信号</li>
+<li>2.发出0x00命令</li>
+<li>3.<strong>发送5个周期的地址（两个列地址，三个行地址（page））</strong></li>
+<li>4.再发送0x30命令</li>
+<li>5.等待就绪</li>
+<li>6.读数据</li>
+<li>7.禁止片选</li>
+</ul>
+<h3 id="2-4-转换所读地址的列与页"><a href="#2-4-转换所读地址的列与页" class="headerlink" title="2.4 转换所读地址的列与页"></a>2.4 转换所读地址的列与页</h3><p>将输入的地址addr转换为：</p>
+<ul>
+<li>列地址（Col Address）<ul>
+<li>page是定位到哪一个页，col变量定位的就是在这个页的偏移量（在这个页上的第几列0~2047）</li>
+</ul>
+</li>
+<li>行地址（页）<ul>
+<li>因为读取数据的时候是一次性读出一页，因此当给出地址addr之后，每一页的数据大小是2K，因此我们可以根据地址知道我们读取的数据是哪一个页</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-c"><code class="language-c">    <span class="token keyword">int</span> col  <span class="token operator">=</span> addr <span class="token operator">%</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//列地址  addr &amp;(2048-1); </span>
+
+    <span class="token keyword">int</span> page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//行地址（相当于页地址）</span></code></pre>
+<h3 id="2-5-NAND等待就绪"><a href="#2-5-NAND等待就绪" class="headerlink" title="2.5 NAND等待就绪"></a>2.5 NAND等待就绪</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_nfcon.png" alt=""></p>
+<ul>
+<li>当NFSATA[0] = 0时，表示正忙</li>
+<li>当NFSATA[0] = 1时，表示就绪<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 等待NAND就绪 */</span>
+<span class="token keyword">void</span> <span class="token function">nand_wait_ready</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>NFSTAT <span class="token operator">&amp;</span> <span class="token number">0x01</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//当NFSATA[0] = 1时，表示就绪</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ul>
+<h3 id="2-6-读取数据函数"><a href="#2-6-读取数据函数" class="headerlink" title="2.6 读取数据函数"></a>2.6 读取数据函数</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* NAND FLASH读取数据
+ * param:读取的地址、存放的地址、读取的长度
+ */</span>
+<span class="token keyword">void</span> <span class="token function">read_nand_data</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">,</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span>buf<span class="token punctuation">,</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/*page是定位到哪一个页，col变量定位的就是在这个
+     *页的偏移量（在这个页上的第几列0~2047）
+     */</span>
+    <span class="token keyword">int</span> col  <span class="token operator">=</span> addr <span class="token operator">%</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//列地址  addr &amp;(2048-1); </span>
+
+    <span class="token comment" spellcheck="true">/* 因为读取数据的时候是一次性读出一页，因此当给出
+     * 地址addr之后，每一页的数据大小是2K，因此我们可以
+     * 根据地址知道我们读取的数据是哪一个页
+     */</span>
+    <span class="token keyword">int</span> page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//行地址（相当于页地址）</span>
+
+    <span class="token function">nand_enable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//1.使能CS</span>
+
+    <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> len<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//2.发出0x00命令</span>
+
+        <span class="token comment" spellcheck="true">/* col addr */</span>
+        <span class="token function">nand_write_addr</span><span class="token punctuation">(</span>col <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//3.发出地址</span>
+        <span class="token function">nand_write_addr</span><span class="token punctuation">(</span><span class="token punctuation">(</span>col <span class="token operator">>></span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+
+         <span class="token comment" spellcheck="true">/* row/page addr */</span>
+        <span class="token function">nand_write_addr</span><span class="token punctuation">(</span>page <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">nand_write_addr</span><span class="token punctuation">(</span><span class="token punctuation">(</span>page <span class="token operator">>></span>  <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">nand_write_addr</span><span class="token punctuation">(</span><span class="token punctuation">(</span>page <span class="token operator">>></span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+
+        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x30</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//4.发出0x30命令</span>
+
+        <span class="token function">nand_wait_ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//5.等待就绪</span>
+        <span class="token comment" spellcheck="true">/* for循环中有2个条件
+         * 1.当读到页尾，但还是没有读完，说明需要读取下一页
+         * 2.当已经读取指定字节数，则不再读取
+         */</span>     
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span> <span class="token punctuation">(</span>col <span class="token operator">&lt;</span> <span class="token number">2048</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span> col<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//6.读数据</span>
+            buf<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">nand_read_data_byte</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">==</span> len<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        page<span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//指向下一页</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">nand_disable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//7.禁止CS</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="2-7-NAND重定位"><a href="#2-7-NAND重定位" class="headerlink" title="2.7 NAND重定位"></a>2.7 NAND重定位</h3><blockquote>
+<p>从Nand Flash启动，此时片内SRAM的地址对应的就是CPU的0地址，如果从Nand Flash启动，2440硬件会把nand Flash前4K的数据复制到片内SRAM,如果Nand Flash上的程序大于4K,那后续数据就会丢失，相当于只重定位了前4K的代码。</p>
+</blockquote>
+<p>如何解决上述问题：</p>
+<ul>
+<li>1.前提：实现了NAND FLASH读取数据函数</li>
+<li>2.代码烧写到NAND FLASH,并从NAND中启动</li>
+<li>3.程序运行到重定位代码的位置判断一下，是从Nand Flash启动还是NOR  Flash启动（通过往0地址写数据，因为Nand是支持读写的，所以读出的结果和写的结果一样，而NOR Flash不能像内存一样读写，因此读写的内容是不一致的）</li>
+<li>4.如果从NOR Flash启动，直接使用简单的重定位代码就行，如果是Nand Flash启动，那就是用Nnad Flash的读函数进行代码的重定位。</li>
+</ul>
+<hr>
+<blockquote>
+<p>首先判断从NorFlash or NandFlash中启动</p>
+</blockquote>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 检查是否从NorFlash中启动
+ * 方法：写0x12345678到0地址，在读取出来，如果得到0x12345678，表示0地址上的内容被修改，即为片内RAM，则为nand启动
+ * 原因：原因：nor不能直接写入，写入需要发出一定格式的数据，才能写入
+ * 返回0为nand启动，返回1为nor启动
+*/</span>
+<span class="token keyword">int</span> <span class="token function">isBootFromNorFlash</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> val <span class="token operator">=</span> <span class="token operator">*</span>p<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//暂存[0]上的数据</span>
+    <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0xdeadc0de</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//dead code任意值</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0xdeadc0de</span> <span class="token operator">==</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/* 写成功，对应nand启动 */</span>
+        <span class="token operator">*</span>p <span class="token operator">=</span> val<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//恢复原来的值</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<blockquote>
+<p>重定位代码</p>
+</blockquote>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/*
+ * 将除bss段的全部数据拷贝到sdram中
+ * 传递形参，原地址src:_start  目标地址dest:__bss_start  长度len:__bss_start-_star
+ */</span>
+<span class="token keyword">void</span> <span class="token function">copy_to_sdram</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/* 要从lds文件中获取__code_start、__bss_start
+     * 然后从0地址把数据复制到__code_start
+     */</span>
+    <span class="token keyword">extern</span> <span class="token keyword">int</span> __code_start<span class="token punctuation">,</span>__bss_start<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//声明外部变量</span>
+
+    <span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span>src  <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//flash中0地址 </span>
+    <span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span>dest <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>__code_start<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//目标地址：sdram中的0x30000000地址</span>
+    <span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span>end  <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>__bss_start<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//结束地址：bss的起始地址</span>
+
+    <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>__bss_start <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>__code_start<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取数据总长度</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isBootFromNorFlash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//如果从Nor中启动</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>dest <span class="token operator">&lt;</span> end<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token operator">*</span>dest<span class="token operator">++</span> <span class="token operator">=</span> <span class="token operator">*</span>src<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//拷贝</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//从Nand中启动,需要先初始化nand，然后重定位代码</span>
+        <span class="token function">nand_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//从 src 复制到 des ,总共复制len字节，也就是重定位的代码</span>
+        <span class="token function">read_nand_data</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span><span class="token punctuation">)</span>src<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>dest<span class="token punctuation">,</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="2-7-读数据测试"><a href="#2-7-读数据测试" class="headerlink" title="2.7 读数据测试"></a>2.7 读数据测试</h3><blockquote>
+<p>读取0地址后160bytes的数据，如果跟.bin文件前160字节数据相同，则读取成功，否则读取失败</p>
+</blockquote>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 测试函数：读数nand上160bytes数据 
+ */</span>
+<span class="token keyword">void</span> <span class="token function">read_nand_flash</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">,</span>hex_addr<span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">char</span> c<span class="token punctuation">,</span>str<span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">,</span>data<span class="token punctuation">[</span><span class="token number">160</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/* 获得地址 */</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"*****Enter the address to read:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    addr <span class="token operator">=</span> <span class="token function">get_uint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">read_nand_data</span><span class="token punctuation">(</span>addr<span class="token punctuation">,</span>data<span class="token punctuation">,</span><span class="token number">160</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取到地址上的数据</span>
+    p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>data<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//p指向data,用于打印data数据</span>
+
+    hex_addr <span class="token operator">=</span> addr<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//起始地址</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Read Data:\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"            00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f\n\r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token comment" spellcheck="true">/* 长度固定为160 bytes */</span>    
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"0x%08x  "</span><span class="token punctuation">,</span>hex_addr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//每行打印16个16进制数</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">16</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            c <span class="token operator">=</span> <span class="token operator">*</span>p<span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//读取16个</span>
+            str<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> c<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//保存字符</span>
+            <span class="token comment" spellcheck="true">//先打印数值</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%02x "</span><span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" | "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//后打印字符</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">16</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">0x20</span> <span class="token operator">||</span> str<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0x7e</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//不可视字符,打印‘.’</span>
+                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span>str<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        hex_addr<span class="token operator">+</span><span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//换行+16</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n\r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span></code></pre>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_bin_data.png" alt=""></p>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_read_test2.png" alt=""><br>由上测试可知读取成功</p>
+<h2 id="3-擦除"><a href="#3-擦除" class="headerlink" title="3.擦除"></a>3.擦除</h2><h3 id="3-1-擦除时序"><a href="#3-1-擦除时序" class="headerlink" title="3.1 擦除时序"></a>3.1 擦除时序</h3><ul>
+<li>1.发出片选信号</li>
+<li>2.发出0x60命令</li>
+<li>3.<strong>发送3个行地址（page）</strong></li>
+<li>4.再发送0xD0命令</li>
+<li>5.等待就绪（等待擦除完成）</li>
+<li>6.禁止片选</li>
+</ul>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_erase_timing.png" alt=""></p>
+<h3 id="3-2-地址和参数合法性"><a href="#3-2-地址和参数合法性" class="headerlink" title="3.2 地址和参数合法性"></a>3.2 地址和参数合法性</h3><ul>
+<li>由于按块来擦除（128KB），因此地址和参数都必须是128K的倍数</li>
+<li><pre class=" language-c"><code class="language-c">  <span class="token comment" spellcheck="true">/* 检查参数合法性 */</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>addr <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">0x1FFFF</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//128K</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Err addr! Please enter an integral multiple of 128K\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>len <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">0x1FFFF</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//128K</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Err len! Please enter an integral multiple of 128K\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre>
+</li>
+</ul>
+<h3 id="3-3-擦除函数"><a href="#3-3-擦除函数" class="headerlink" title="3.3 擦除函数"></a>3.3 擦除函数</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* NAND FLASH擦除数据
+ * param:擦除的起始地址、擦除的长度(byte)
+ * ret:失败-1，成功0
+*/</span>
+<span class="token keyword">int</span> <span class="token function">erase_nand_data</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">,</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//行地址</span>
+
+    <span class="token comment" spellcheck="true">/* 检查参数合法性 */</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>addr <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">0x1FFFF</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//128K</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Err addr! Please enter an integral multiple of 128K\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>len <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">0x1FFFF</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//128K</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Err len! Please enter an integral multiple of 128K\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/* 1.使能CS */</span>
+    <span class="token function">nand_enable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//行地址</span>
+
+        <span class="token comment" spellcheck="true">/* 2.发出0x60命令 */</span>
+        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x60</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token comment" spellcheck="true">/* 3.发出地址row/page addr */</span>
+        <span class="token function">nand_page</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>      
+        <span class="token comment" spellcheck="true">/* 4.发出0xD0命令 */</span>
+        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0xD0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token comment" spellcheck="true">/* 5.等待就绪(等待擦除完成) */</span>
+        <span class="token function">nand_wait_ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+
+        len <span class="token operator">-</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">128</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//长度减去一个block</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">==</span> len<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        addr <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">128</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//指向下一块</span>
+    <span class="token punctuation">}</span> 
+    <span class="token comment" spellcheck="true">/* 6.禁止CS */</span>
+    <span class="token function">nand_disable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="3-4-擦除数据测试"><a href="#3-4-擦除数据测试" class="headerlink" title="3.4 擦除数据测试"></a>3.4 擦除数据测试</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 擦除测试函数：固定擦除一个1block = 128K
+*/</span>
+<span class="token keyword">void</span> <span class="token function">erase_nand_flash</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> addr<span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> whichblock<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* 获得第几个Block */</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Enter the address of sector to erase: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    addr <span class="token operator">=</span> <span class="token function">get_uint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    whichblock <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">128</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** block number : [ %d ]\r\n"</span><span class="token punctuation">,</span>whichblock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/* 提示擦除数据的范围 */</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** Erase range : 0x%08x - 0x%08x\n\r"</span><span class="token punctuation">,</span>addr<span class="token punctuation">,</span><span class="token punctuation">(</span>addr<span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">128</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** erase ...\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">erase_nand_data</span><span class="token punctuation">(</span>addr<span class="token punctuation">,</span><span class="token number">128</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//如果擦除成功</span>
+         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** Erase finished!\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     <span class="token keyword">else</span><span class="token punctuation">{</span>
+         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** Erase fail!\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_erase_test.png" alt=""></p>
+<h2 id="4-写数据"><a href="#4-写数据" class="headerlink" title="4.写数据"></a>4.写数据</h2><h3 id="4-1-写数据时序"><a href="#4-1-写数据时序" class="headerlink" title="4.1 写数据时序"></a>4.1 写数据时序</h3><ul>
+<li>1.发出片选信号</li>
+<li>2.发出0x80命令</li>
+<li>3.<strong>发送5个周期的地址（两个列地址，三个行地址（page））</strong></li>
+<li>4.写入数据</li>
+<li>5.再发送0x10命令</li>
+<li>6.等待就绪（等待擦除完成）</li>
+<li>7.禁止片选<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_wriet_timing.png" alt=""></li>
+</ul>
+<h3 id="4-2-写数据函数"><a href="#4-2-写数据函数" class="headerlink" title="4.2 写数据函数"></a>4.2 写数据函数</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* NAND FLASH写入数据
+ * param:写入的地址、数据指针、写入的长度
+ */</span>
+<span class="token keyword">void</span> <span class="token function">write_nand_data</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">,</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span>buf<span class="token punctuation">,</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> col <span class="token operator">=</span> addr <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">2048</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* 1.使能CS */</span>
+    <span class="token function">nand_enable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/* 2.发出0x80命令 */</span>
+        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x80</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/* 3.发出地址 */</span>
+        <span class="token function">nand_col</span><span class="token punctuation">(</span>col<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">nand_page</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/* 4.写入数据*/</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span> <span class="token punctuation">(</span>col <span class="token operator">&lt;</span> <span class="token number">2048</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">nand_write_data_byte</span><span class="token punctuation">(</span>buf<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">/* 5.发出0x10命令 */</span>
+        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/* 6.等待就绪(等待写入完成) */</span>
+        <span class="token function">nand_wait_ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">==</span> len<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span><span class="token punctuation">{</span>
+            col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            page<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/* 7.禁止CS */</span>
+    <span class="token function">nand_disable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="4-3-写数据测试"><a href="#4-3-写数据测试" class="headerlink" title="4.3 写数据测试"></a>4.3 写数据测试</h3><blockquote>
+<p>此处注意：一般在烧写数据之前需要对数据进行擦除操作，除非原本的数据全f，否则都需要进行擦除，不然写入的数据会有问题。</p>
+</blockquote>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">write_nand_flash</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">char</span> str<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> len<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/* 获得第几个Block */</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** Enter addr to write: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    addr <span class="token operator">=</span> <span class="token function">get_uint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** Enter the string to write: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">gets</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    len <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** write range : 0x%08x - 0x%08x\r\n"</span><span class="token punctuation">,</span>addr<span class="token punctuation">,</span><span class="token punctuation">(</span>addr <span class="token operator">+</span> len<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** writing ...\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">write_nand_data</span><span class="token punctuation">(</span>addr<span class="token punctuation">,</span>str<span class="token punctuation">,</span><span class="token function">strlen</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//strlen不包括结束符'\0'，因此需要+1</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** writing finished\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li>在<code>0x100000</code>地址写入“hello,world!”<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_write_test.png" alt=""></li>
+<li>读取数据<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_read_test3.png" alt=""></li>
+</ul>
+<h2 id="5-判断是否为坏块"><a href="#5-判断是否为坏块" class="headerlink" title="5.判断是否为坏块"></a>5.判断是否为坏块</h2><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_data_store.png" alt=""></p>
+<blockquote>
+<p>通过读取OOB区的第0个字节（即第<code>2048</code>个字节）来判断，如果不是0xFF，为坏块，否则不是</p>
+</blockquote>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 判断是否为坏块
+ * ret:返回1为坏块，返回0不是
+ */</span>
+<span class="token keyword">int</span> <span class="token function">isNandBadBlock</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> col <span class="token operator">=</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//读取OOB区第0个字节</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">char</span> val <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* 1. 选中 */</span>
+    <span class="token function">nand_enable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* 2. 发出读命令00h */</span>
+    <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* 3. 发出地址(分5步发出) */</span>
+    <span class="token function">nand_col</span><span class="token punctuation">(</span>col<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">nand_page</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* 4. 发出读命令30h */</span>
+    <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* 5. 判断状态,等待就绪 */</span>
+    <span class="token function">nand_wait_ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* 6. 读数据 */</span>
+    val <span class="token operator">=</span> <span class="token function">nand_read_data_byte</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* 7. 取消选中 */</span>    
+    <span class="token function">nand_disable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>val <span class="token operator">!=</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 坏块 */</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="6-ECC"><a href="#6-ECC" class="headerlink" title="6.ECC"></a>6.ECC</h2><ul>
+<li>ECC（Error Checking and Correction），是一种用于Nand的差错检测和修正算法。</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zengwangfa.top" rel="external nofollow noreferrer">淹死的鱼</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zengwangfa.top/2019/12/27/s3c2440-nand/">https://zengwangfa.top/2019/12/27/s3c2440-nand/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://zengwangfa.top" target="_blank">淹死的鱼</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/ARM9/">
+                                    <span class="chip bg-color">ARM9</span>
+                                </a>
+                            
+                                <a href="/tags/Nand/">
+                                    <span class="chip bg-color">Nand</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/12/31/s3c2440-lcd/">
+                    <div class="card-image">
+                        
+                        <img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_scan.gif" class="responsive-img" alt="LCD硬件原理及初始化">
+                        
+                        <span class="card-title">LCD硬件原理及初始化</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            S3C2440 LCD硬件原理及初始化
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/S3C2440/" class="post-category">
+                                    S3C2440
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/LCD/">
+                        <span class="chip bg-color">LCD</span>
+                    </a>
+                    
+                    <a href="/tags/ARM9/">
+                        <span class="chip bg-color">ARM9</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/12/25/websites/">
+                    <div class="card-image">
+                        
+                        <img src="http://q3996b08i.bkt.clouddn.com/embedded-study/img_picture1.png" class="responsive-img" alt="实用的网站及工具">
+                        
+                        <span class="card-title">实用的网站及工具</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一些实用的网站及工具收藏
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    记录
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">效率工具</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://zengwangfa.top" target="_blank">淹死的鱼</a>
+
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">9.9k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "7";
+                    var startDate = "28";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/zengwangfa" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:zengwangfa@outlook.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=508293391" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 508293391" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://blog.csdn.net/qq_39492932" class="tooltipped" target="_blank" data-tooltip="访问我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
+    </a>
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
