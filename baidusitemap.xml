@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://zengwangfa.top/2019/10/01/dji-offer/</loc>
+    <lastmod>2020-01-05</lastmod>
+  </url>  <url>
+    <loc>https://zengwangfa.top/2019/12/31/s3c2440-lcd/</loc>
+    <lastmod>2020-01-05</lastmod>
+  </url>  <url>
     <loc>https://zengwangfa.top/2018/11/28/raspberry-raspivid/</loc>
-    <lastmod>2020-01-04</lastmod>
+    <lastmod>2020-01-05</lastmod>
   </url>  <url>
     <loc>https://zengwangfa.top/2018/12/02/raspberry-mjpg/</loc>
-    <lastmod>2020-01-04</lastmod>
+    <lastmod>2020-01-05</lastmod>
   </url>  <url>
     <loc>https://zengwangfa.top/2019/12/27/s3c2440-nand/</loc>
     <lastmod>2020-01-04</lastmod>
@@ -16,13 +22,7 @@
     <loc>https://zengwangfa.top/2019/07/24/hello-world/</loc>
     <lastmod>2020-01-04</lastmod>
   </url>  <url>
-    <loc>https://zengwangfa.top/2019/12/31/s3c2440-lcd/</loc>
-    <lastmod>2020-01-04</lastmod>
-  </url>  <url>
     <loc>https://zengwangfa.top/2019/06/28/the-three-body-problem-x/</loc>
-    <lastmod>2019-12-27</lastmod>
-  </url>  <url>
-    <loc>https://zengwangfa.top/2019/10/01/dji-offer/</loc>
     <lastmod>2019-12-27</lastmod>
   </url>
 </urlset>
