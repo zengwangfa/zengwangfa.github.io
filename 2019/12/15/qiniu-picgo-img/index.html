@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MJPG-Streamer推流测试, 淹死的鱼">
-    <meta name="description" content="树莓派MJPG-Streamer双摄推流">
+    <meta name="keywords" content="利用七牛云+PicGo进行图片管理与上传, 淹死的鱼">
+    <meta name="description" content="白嫖七牛云作为免费博客图床">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>MJPG-Streamer推流测试 | 淹死的鱼</title>
+    <title>利用七牛云+PicGo进行图片管理与上传 | 淹死的鱼</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,12 +304,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://q3996b08i.bkt.clouddn.com/embedded-study/raspberrypi_board1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://q3996b08i.bkt.clouddn.com/embedded-study/qiniu_picgo_img1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">MJPG-Streamer推流测试</h1>
+                    <h1 class="description center-align post-title">利用七牛云+PicGo进行图片管理与上传</h1>
                 </div>
             </div>
         </div>
@@ -426,8 +426,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Raspberry-Pi/">
-                                <span class="chip bg-color">Raspberry Pi</span>
+                            <a href="/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">效率工具</span>
                             </a>
                         
                     </div>
@@ -451,28 +451,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-12-02
+                    2019-12-15
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-01-05
+                    2020-01-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    601
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    2 分
                 </div>
                 
 				
@@ -488,125 +488,64 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a href="https://github.com/jacksonliam/mjpg-streamer" target="_blank" rel="noopener">mjpg-streamer Github</a></p>
-<p><kbd><strong>用到的工具材料</strong>：</kbd></p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 树莓派3B+</li>
-<li><input checked="" disabled="" type="checkbox"> 网线</li>
-<li><input checked="" disabled="" type="checkbox"> 电脑</li>
-<li><input checked="" disabled="" type="checkbox"> CSI摄像头</li>
-<li><input checked="" disabled="" type="checkbox"> USB摄像头</li>
+                <h2 id="1-注册七牛云账号"><a href="#1-注册七牛云账号" class="headerlink" title="1.注册七牛云账号"></a>1.注册七牛云账号</h2><ul>
+<li><a href="https://portal.qiniu.com/signup" target="_blank" rel="noopener">点击注册七牛云</a></li>
 </ul>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/qiniu_signup.png" alt="注册七牛云"></p>
 <blockquote>
-<p>实现的功能有：<br>①树莓派通过网线将CSI摄像头与USB摄像头的实时画面推流至上位机电脑中的显示<br>②实测双摄延时低至200ms以下</p>
+<p>需要<strong>实名认证</strong>，认证之后再进行上传图片<br>点击进入“个人中心”-&gt; “个人信息”，进行实名认证，即有10G免费存储空间</p>
 </blockquote>
-<p>我的另一篇博文中介绍了使用树莓派H.264硬件编解码推流CSI摄像头，所以本文仅介绍如何用 MJPG-Streamer推流USB摄像头实时画面。所以需要同时推流双摄时，可选择CSI+USB Camera或者双USB Camera。</p>
-<h1 id="总体流程"><a href="#总体流程" class="headerlink" title="总体流程"></a>总体流程</h1><p>1.树莓派硬件连接与软件及驱动安装<br>2.上位机PC端的接收视频流<br>3.延迟效果测试</p>
-<h2 id="1-硬件连接与软件及驱动配置"><a href="#1-硬件连接与软件及驱动配置" class="headerlink" title="1.硬件连接与软件及驱动配置"></a>1.硬件连接与软件及驱动配置</h2><h3 id="1）检测是否存在USB摄像头设备"><a href="#1）检测是否存在USB摄像头设备" class="headerlink" title="1）检测是否存在USB摄像头设备"></a>1）检测是否存在USB摄像头设备</h3><p>输入以下指令：</p>
-<pre><code>pi@raspberrypi:~ $ lsusb</code></pre><ul>
-<li>未插入USB摄像头</li>
-</ul>
-<pre><code>pi@raspberrypi:~ $ lsusb 
-Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. SMSC9512/9514 Fast Ethernet Adapter
-Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-</code></pre><ul>
-<li>插入USB摄像头</li>
-</ul>
-<pre><code>pi@raspberrypi:~ $ lsusb
-Bus 001 Device 004: ID 05a3:9230 ARC International
-Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. SMSC9512/9514 Fast Ethernet Adapter
-Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</code></pre><pre><code>pi@raspberrypi:~ $ v4l2-ctl --list-formats</code></pre><pre><code>pi@raspberrypi:~ $ v4l2-ctl --list-formats
-
-ioctl: VIDIOC_ENUM_FMT
-        Index       : 0
-        Type        : Video Capture
-        Pixel Format: 'MJPG' (compressed)
-        Name        : Motion-JPEG
-
-        Index       : 1
-        Type        : Video Capture
-        Pixel Format: 'YUYV'
-        Name        : YUYV 4:2:2
-</code></pre><table>
-    <tbody><tr>
-        <td><center><img src="https://img-blog.csdnimg.cn/20181202170523751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70">图1  还未插入USB摄像头 </center></td>
-        <td><center><img src="https://img-blog.csdnimg.cn/20181202170531278.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70">图2 插入USB摄像头</center></td>
-</tr></tbody></table>
-
-
-<h3 id="2）安装-MJPG-Streamer-from-github"><a href="#2）安装-MJPG-Streamer-from-github" class="headerlink" title="2）安装 MJPG-Streamer from github"></a>2）安装 MJPG-Streamer from github</h3><blockquote>
-<p>按照以下命令安装MJPG-Streamer及其相关配置 每一行为一个命令</p>
-</blockquote>
-<pre><code>sudo apt-get install cmake libjpeg8-dev
-
-wget https://github.com/jacksonliam/mjpg-streamer/archive/master.zip
-
-unzip master.zip
-
-cd mjp*g-*
-
-cd mjpg-*
-
-make
-
-sudo make install
-
-cd $home</code></pre><p>流程如下<br><img src="https://img-blog.csdnimg.cn/2018120219295880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt=""></p>
-<h3 id="3）启动MJPG-Streamer"><a href="#3）启动MJPG-Streamer" class="headerlink" title="3）启动MJPG-Streamer"></a>3）启动MJPG-Streamer</h3><blockquote>
-<p>启动如下指令：<br>TCP端口8085被指定为输出端口，以确保没有对其他任何东西的干扰。</p>
-</blockquote>
-<pre><code>/usr/local/bin/mjpg_streamer -i "/usr/local/lib/mjpg-streamer/input_uvc.so -n -f 10 -r 1280x720" -o "/usr/local/lib/mjpg-streamer/output_http.so -p 8085 -w /usr/local/share/mjpg-streamer/www"</code></pre><p><img src="https://img-blog.csdnimg.cn/20181202185954705.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt="树莓派推流成功"></p>
-<p><strong>如上图所示，推流已经完成，分辨率为720P(1280X720)，端口号为8085，到此树莓派的任务已经完成</strong></p>
-<pre><code>
-
-pi@raspberrypi:~ $ /usr/local/bin/mjpg_streamer -i "/usr/local/lib/mjpg-streamer/input_uvc.so -n -f 10 -r 1280x720" -o "/usr/local/lib/mjpg-streamer/output_http.so -p 8085 -w /usr/local/share/mjpg-streamer/www"
-MJPG Streamer Version.: 2.0
- i: Using V4L2 device.: /dev/video0
- i: Desired Resolution: 1280 x 720
- i: Frames Per Second.: 10
- i: Format............: JPEG
- i: TV-Norm...........: DEFAULT
- i: FPS coerced ......: from 10 to 60
- o: www-folder-path......: /usr/local/share/mjpg-streamer/www/
- o: HTTP TCP port........: 8085
- o: HTTP Listen Address..: (null)
- o: username:password....: disabled
- o: commands.............: enabled
-</code></pre><h3 id="4）开启指定摄像头"><a href="#4）开启指定摄像头" class="headerlink" title="4）开启指定摄像头"></a>4）开启指定摄像头</h3><ul>
-<li>USB设备存在两个摄像头</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20190507154817290.png" alt=""></p>
+<h2 id="2-创建标准存储空间"><a href="#2-创建标准存储空间" class="headerlink" title="2.创建标准存储空间"></a>2.创建标准存储空间</h2><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/qiniu_controller.png" alt="点击进入控制台"></p>
+<h3 id="2-1-添加对象存储"><a href="#2-1-添加对象存储" class="headerlink" title="2.1 添加对象存储"></a>2.1 添加对象存储</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/qiniu_store.png" alt="点击对象存储"></p>
+<h3 id="2-2-设置存储空间"><a href="#2-2-设置存储空间" class="headerlink" title="2.2 设置存储空间"></a>2.2 设置存储空间</h3><p>存储空间名称：自行命名<br>存储区域：选与你地域较近的区域<br>访问控制：选“公开空间”，否则外网无法访问<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/qiniu_store_setting.png" alt="存储空间设置"></p>
+<h3 id="2-3-上传图片"><a href="#2-3-上传图片" class="headerlink" title="2.3 上传图片"></a>2.3 上传图片</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/qiniu_upload.png" alt="上传图片"></p>
+<h3 id="2-4-获取图片外链"><a href="#2-4-获取图片外链" class="headerlink" title="2.4 获取图片外链"></a>2.4 获取图片外链</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/qiniu_copy_url.png" alt="获取图片外链"></p>
+<h2 id="3-使用PicGo进行管理与上传"><a href="#3-使用PicGo进行管理与上传" class="headerlink" title="3.使用PicGo进行管理与上传"></a>3.使用PicGo进行管理与上传</h2><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/picgo.png" alt="在这里描述图片"></p>
 <ul>
-<li>如果你有多个摄像头，也可以开启多个摄像头</li>
-<li>-d /dev/video1    参数标明需要开启的摄像头</li>
+<li><a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener">点击下载PicGo</a></li>
 </ul>
-<pre><code>/usr/local/bin/mjpg_streamer -i "/usr/local/lib/mjpg-streamer/input_uvc.so -d /dev/video1 -n -f 10 -r 1280x720" -o "/usr/local/lib/mjpg-streamer/output_http.so -p 8085 -w /usr/local/share/mjpg-streamer/www"</code></pre><h2 id="2-上位机PC端的接收视频流"><a href="#2-上位机PC端的接收视频流" class="headerlink" title="2.上位机PC端的接收视频流"></a>2.上位机PC端的接收视频流</h2><blockquote>
-<p>采用web网页接收视频流</p>
-</blockquote>
-<p>打开浏览器输入：</p>
-<pre><code>http://树莓派ip地址:开启的端口号</code></pre><pre><code>// A case in point 例如：
-http://192.168.2.150:8085</code></pre><blockquote>
-<p>输入 <a href="http://192.168.2.150:8085" target="_blank" rel="noopener">http://192.168.2.150:8085</a>   打开后如下图：为MJPG Streamer 首页<br><img src="https://img-blog.csdnimg.cn/20181202190911467.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt=""></p>
-</blockquote>
+<h3 id="3-1-设置七牛图床"><a href="#3-1-设置七牛图床" class="headerlink" title="3.1 设置七牛图床"></a>3.1 设置七牛图床</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/picgo_qiniu_setting.png" alt="设置七牛图床"></p>
 <ul>
-<li>查看视频点击Stream<br><img src="https://img-blog.csdnimg.cn/20181202190927946.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt=""></li>
+<li>1.获得AK与SK</li>
 </ul>
-<p>看到网页中有树莓派USB摄像头拍摄的画面，证明视频推流成功。</p>
-<h2 id="3-双摄延迟效果测试"><a href="#3-双摄延迟效果测试" class="headerlink" title="3.双摄延迟效果测试"></a>3.双摄延迟效果测试</h2><blockquote>
-<p>我们打开一个在线秒表，让其开始计时，而后我们用树莓派CSI摄像头及USB摄像头去拍摄电脑屏幕，然后截屏，计算拍摄的时间与秒表实际时间的差值，可以粗略测得延时的结果</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/20181202191338911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt=""></p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token string">"如上图所示"</span>    在线秒表为<span class="token number">1.18</span><span class="token punctuation">.</span><span class="token number">697</span>  
-USB摄像头（Web MJPG<span class="token operator">-</span>Streamer）推流视频中的在线秒表为<span class="token number">1.18</span><span class="token punctuation">.</span><span class="token number">567</span>  
-CSI摄像头（MPlayer  视频播放器）推流视频中的在线秒表为<span class="token number">1.18</span><span class="token punctuation">.</span><span class="token number">525</span>
-其差值△t1<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">.</span>130s<span class="token operator">=</span>130ms                  △t1<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">.</span>172s<span class="token operator">=</span>172ms</code></pre>
-<p>之后我通过多次测试多种组合得到如下图数据（仅做参考）：</p>
-<p><img src="https://img-blog.csdnimg.cn/20181202192130874.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt=""></p>
-<p>总结：</p>
-<pre class=" language-javascript"><code class="language-javascript">   分辨率都为 720P  延迟大致为<span class="token number">100</span><span class="token operator">-</span>200ms之间<span class="token punctuation">[</span>带光纤延迟增加并不明显<span class="token punctuation">]</span>
-   分辨率都为 1080P 延迟为<span class="token number">200</span><span class="token operator">-</span>300ms</code></pre>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/qiniu_ak_sk.png" alt=""></p>
+<ul>
+<li>2.存储空间名要与之前创建的空间名移植</li>
+<li>3.获得访问网址</li>
+</ul>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/qiniu_copy_web.png" alt="访问网址"></p>
+<h3 id="3-2-复制外链"><a href="#3-2-复制外链" class="headerlink" title="3.2 复制外链"></a>3.2 复制外链</h3><p>上传完的图片就会在相册中，并且预览、复制链接</p>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/picgo_photos.png" alt=""></p>
+<h3 id="3-3-自定义链接格式"><a href="#3-3-自定义链接格式" class="headerlink" title="3.3 自定义链接格式"></a>3.3 自定义链接格式</h3><ul>
+<li><code>Custom</code>模式可以自定义链接格式</li>
+</ul>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/picgo_set_url.png" alt=""></p>
+<p>-用占位符<code>$url</code>来表示ul的位置</p>
+<ul>
+<li>用占位符<code>$fileName</code>来表示文件名的位置</li>
+</ul>
+<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/picgo_set_by_custom.png" alt="自定义链接格式"></p>
+<p>点击复制，就会按照自定义的格式复制链接，eg：</p>
+<pre><code>![在这里描述图片](http://q3996b08i.bkt.clouddn.com/embedded-study/lcdcon1.png)</code></pre><h3 id="3-4-PicGo插件"><a href="#3-4-PicGo插件" class="headerlink" title="3.4 PicGo插件"></a>3.4 PicGo插件</h3><ul>
+<li><a href="https://github.com/PicGo/Awesome-PicGo" target="_blank" rel="noopener">点击进入PicGo插件合集页面</a></li>
+</ul>
+<hr>
+<ul>
+<li><a href="https://github.com/PicGo/picgo-plugin-autocopy" target="_blank" rel="noopener">PicGo -plugin-autocopy</a>:用于上传后将url自动复制到剪贴板的PicGo插件。【CLI】</li>
+<li><a href="https://github.com/zWingz/picgo-plugin-github-plus" target="_blank" rel="noopener">PicGo -plugin-github-plus</a>: PicGo上传github &amp; gitee同步功能。【GUI】</li>
+<li><a href="https://github.com/picgo/picgo-plugin-pico-migrater" target="_blank" rel="noopener">PicGo -plugin- pico -migrater</a> :一个PicGo插件，用于将markdown文件中的图片从一个picBed迁移到另一个picBed。【CLI&amp;GUI】</li>
+<li><a href="https://github.com/yuki-xin/picgo-plugin-web-uploader" target="_blank" rel="noopener">PicGo -plugin-web-uploader</a>: PicGo上传自定义web api。【GUI】</li>
+<li><a href="https://github.com/chengww5217/picgo-plugin-qingstor-uploader" target="_blank" rel="noopener">PicGo -plugin-qingstor-uploader</a>: PicGo插件与添加的青石图片托管。【GUI】</li>
+<li><a href="https://github.com/upupming/picgo-plugin-vscode-migrator" target="_blank" rel="noopener">PicGo -plugin-vscode-migrator</a>: PicGo从<a href="https://github.com/Spades-S/vs-picgo/" target="_blank" rel="noopener">‘ vs-picgo ‘</a>导入图像的插件【GUI】</li>
+<li><a href="https://github.com/gclove/picgo-plugin-super-prefix#readme" target="_blank" rel="noopener">PicGo -plugin-super-prefix</a>: PicGo自定义图像文件名和前缀的插件【CLI&amp;GUI】</li>
+<li><a href="https://github.com/xlzy520/picgo-plugin-smms-user.git" target="_blank" rel="noopener">PicGo -plugin-smms-user</a>:针对SM注册用户的PicGo插件。MS【GUI】</li>
+<li><a href="https://github.com/bugwz/picgo-plugin-gitlab" target="_blank" rel="noopener">PicGo -plugin- GitLab</a>: PicGo GitLab上传器【CLI&amp;GUI】</li>
+<li><a href="https://www.npmjs.com/package/picgo-plugin-bilibili" target="_blank" rel="noopener">PicGo -plugin-bilibili</a>: PicGo上传bilibli【CLI&amp;GUI】- <a href="https://github.com/zhanghuid/picgo-plugin-gitee" target="_blank" rel="noopener">PicGo -plugin-gitee</a>: PicGo gitee上传器【CLI&amp;GUI】</li>
+<li><a href="https://github.com/lizhuangs/picgo-plugin-gitee-uploader#readme" target="_blank" rel="noopener">PicGo -plugin-gitee-uploader</a></li>
+<li><a href="https://github.com/jiajiajia343434/picgo-plugin-nextcloud-uploader" target="_blank" rel="noopener">PicGo -plugin- NextCloud - Uploader</a>: PicGo - Uploader for NextCloud【CLI&amp;GUI】</li>
+<li><a href="https://github.com/Dec-F/picgo-plugin-watermark" target="_blank" rel="noopener">PicGo -plugin-watermark</a>: PicGo的水印插件【CLI&amp;GUI】【v2.2.0+】</li>
+<li><a href="https://github.com/PicGo/picgo-plugin-quick-capture" target="_blank" rel="noopener">PicGo -plugin-quick-capture</a>: PicGo【CLI&amp;GUI】【v2.2.0+】快速截图及上传插件</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -650,7 +589,7 @@ CSI摄像头（MPlayer  视频播放器）推流视频中的在线秒表为<span
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zengwangfa.top/2018/12/02/raspberry-mjpg/">https://zengwangfa.top/2018/12/02/raspberry-mjpg/</a>
+                    <a href="https://zengwangfa.top/2019/12/15/qiniu-picgo-img/">https://zengwangfa.top/2019/12/15/qiniu-picgo-img/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -688,8 +627,8 @@ CSI摄像头（MPlayer  视频播放器）推流视频中的在线秒表为<span
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Raspberry-Pi/">
-                                    <span class="chip bg-color">Raspberry Pi</span>
+                                <a href="/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">效率工具</span>
                                 </a>
                             
                         </div>
@@ -859,30 +798,30 @@ CSI摄像头（MPlayer  视频播放器）推流视频中的在线秒表为<span
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/06/28/the-three-body-problem-x/">
+                <a href="/2019/12/25/websites/">
                     <div class="card-image">
                         
-                        <img src="http://q2lxl3ulw.bkt.clouddn.com/ian-blog-images/galaxy1.jpg" class="responsive-img" alt="观想之宙">
+                        <img src="http://q3996b08i.bkt.clouddn.com/embedded-study/img_picture1.png" class="responsive-img" alt="实用的网站及工具">
                         
-                        <span class="card-title">观想之宙</span>
+                        <span class="card-title">实用的网站及工具</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            我看到了我的爱恋
+                            一些实用的网站及工具收藏
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-06-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-25
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%98%85%E8%AF%BB/" class="post-category">
-                                    阅读
+                            <a href="/categories/%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    记录
                                 </a>
                             
                             
@@ -892,8 +831,8 @@ CSI摄像头（MPlayer  视频播放器）推流视频中的在线秒表为<span
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%98%85%E8%AF%BB/">
-                        <span class="chip bg-color">阅读</span>
+                    <a href="/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">效率工具</span>
                     </a>
                     
                 </div>
@@ -907,23 +846,23 @@ CSI摄像头（MPlayer  视频播放器）推流视频中的在线秒表为<span
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/11/28/raspberry-raspivid/">
+                <a href="/2019/10/01/dji-offer/">
                     <div class="card-image">
                         
-                        <img src="http://q3996b08i.bkt.clouddn.com/embedded-study/raspberrypi2.jpg" class="responsive-img" alt="CSI摄像头推流">
+                        <img src="http://q2lxl3ulw.bkt.clouddn.com/ian-blog-images/DJI_offer1.png" class="responsive-img" alt="DJI大疆嵌入式秋招记录">
                         
-                        <span class="card-title">CSI摄像头推流</span>
+                        <span class="card-title">DJI大疆嵌入式秋招记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            树莓派推流CSI摄像头推流
+                            2020大疆秋招嵌入式完整流程整理
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-11-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-01
                             </span>
                         <span class="publish-author">
                             
@@ -940,8 +879,8 @@ CSI摄像头（MPlayer  视频播放器）推流视频中的在线秒表为<span
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Raspberry-Pi/">
-                        <span class="chip bg-color">Raspberry Pi</span>
+                    <a href="/tags/%E8%AE%B0%E5%BD%95/">
+                        <span class="chip bg-color">记录</span>
                     </a>
                     
                 </div>
