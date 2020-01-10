@@ -304,7 +304,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://q3996b08i.bkt.clouddn.com/embedded-study/img_cirtuit.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://ian-study.oss-cn-shanghai.aliyuncs.com/img_cirtuit.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -426,12 +426,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ARM9/">
-                                <span class="chip bg-color">ARM9</span>
-                            </a>
-                        
                             <a href="/tags/Nand/">
                                 <span class="chip bg-color">Nand</span>
+                            </a>
+                        
+                            <a href="/tags/ARM9/">
+                                <span class="chip bg-color">ARM9</span>
                             </a>
                         
                     </div>
@@ -462,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-01-04
+                    2020-01-10
                 </div>
                 
 
@@ -492,7 +492,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-读芯片ID"><a href="#1-读芯片ID" class="headerlink" title="1.读芯片ID"></a>1.读芯片ID</h2><h3 id="1-1-读芯片ID时序"><a href="#1-1-读芯片ID时序" class="headerlink" title="1.1 读芯片ID时序"></a>1.1 读芯片ID时序</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_timing.png" alt=""></p>
+                <h2 id="1-读芯片ID"><a href="#1-读芯片ID" class="headerlink" title="1.读芯片ID"></a>1.读芯片ID</h2><h3 id="1-1-读芯片ID时序"><a href="#1-1-读芯片ID时序" class="headerlink" title="1.1 读芯片ID时序"></a>1.1 读芯片ID时序</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_timing.png" alt=""></p>
 <p> 简化为4个步骤：</p>
 <ul>
 <li><p>1.使能片选</p>
@@ -525,11 +525,11 @@
  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Block  size: %d KB\n\r"</span><span class="token punctuation">,</span><span class="token number">64</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>id_info<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">>></span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0x03</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//块大小与id_info[3]第4、5位有关</span>
 
  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"5th   cycle: 0x%x\n\r"</span><span class="token punctuation">,</span>id_info<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="1-2-由ID数据获得芯片参数"><a href="#1-2-由ID数据获得芯片参数" class="headerlink" title="1.2 由ID数据获得芯片参数"></a>1.2 由ID数据获得芯片参数</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_scan_test.png" alt=""></p>
+<h3 id="1-2-由ID数据获得芯片参数"><a href="#1-2-由ID数据获得芯片参数" class="headerlink" title="1.2 由ID数据获得芯片参数"></a>1.2 由ID数据获得芯片参数</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_scan_test.png" alt=""></p>
 </li>
 </ul>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_chip_params.png" alt=""></p>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_scan_test2.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_chip_params.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_scan_test2.png" alt=""></p>
 <ul>
 <li>ID信息的第4字节为<code>0x95</code></li>
 <li>页大小与id_info[3]最低2位有关，可得<strong>页大小</strong>为：<code>2KB</code></li>
@@ -541,25 +541,25 @@
 <h2 id="2-读数据"><a href="#2-读数据" class="headerlink" title="2.读数据"></a>2.读数据</h2><blockquote>
 <p>目标：实现从NAND FLASH中启动，重定位所有数据至SDRAM，并实现读取芯片ID数据</p>
 </blockquote>
-<h3 id="2-1-NAND内部结构分析"><a href="#2-1-NAND内部结构分析" class="headerlink" title="2.1 NAND内部结构分析"></a>2.1 NAND内部结构分析</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_struct.png" alt=""></p>
+<h3 id="2-1-NAND内部结构分析"><a href="#2-1-NAND内部结构分析" class="headerlink" title="2.1 NAND内部结构分析"></a>2.1 NAND内部结构分析</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_struct.png" alt=""></p>
 <ul>
 <li>OOB：out of bank（在bank之外）<br>由上图可得：</li>
 <li>1Page = 2KB + 64B</li>
 <li>1Block = 64 * Pages = 128KB + 4KB</li>
 <li>1Device = 2048 * Blocks = 256MB + 8MB</li>
 </ul>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_data_store.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_data_store.png" alt=""></p>
 <ul>
 <li>OOB区的作用：因为nand的缺点是会发生<code>“位反转”</code>，为了解决这个问题，nand中的OOB区，<strong>用于校验数据区的数据是否发生错误</strong>，当有错误时，可以恢复数据。（其本身不存储数据）</li>
 <li>因为OOB中并不存放数据，只是用于校验数据区是否发生错误，因此当CPU读取Nand Flash<strong>第2048</strong>个数据，该数据为 <code>Page1中的第0个byte</code></li>
 </ul>
-<h3 id="2-2-地址序列与时序"><a href="#2-2-地址序列与时序" class="headerlink" title="2.2 地址序列与时序"></a>2.2 地址序列与时序</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_addr.png" alt=""></p>
+<h3 id="2-2-地址序列与时序"><a href="#2-2-地址序列与时序" class="headerlink" title="2.2 地址序列与时序"></a>2.2 地址序列与时序</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_addr.png" alt=""></p>
 <ul>
 <li>由地址序列可以看出：发出地址信号共需5个周期，前2个周期发出列地址（Column Address），后3个周期发出行地址（Row Address）</li>
-<li>地址线序列有一些位是没有用到的，其目的也是以后兼容更大芯片的nand falsh<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_read_timing.png" alt=""></li>
+<li>地址线序列有一些位是没有用到的，其目的也是以后兼容更大芯片的nand falsh<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_read_timing.png" alt=""></li>
 </ul>
 <blockquote>
-<p>Nand Flash内部结构展开大致如下：<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_struct2.png" alt=""></p>
+<p>Nand Flash内部结构展开大致如下：<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_struct2.png" alt=""></p>
 </blockquote>
 <h3 id="2-3-读数据流程"><a href="#2-3-读数据流程" class="headerlink" title="2.3 读数据流程"></a>2.3 读数据流程</h3><ul>
 <li>1.发出片选信号</li>
@@ -584,7 +584,7 @@
 <pre class=" language-c"><code class="language-c">    <span class="token keyword">int</span> col  <span class="token operator">=</span> addr <span class="token operator">%</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//列地址  addr &amp;(2048-1); </span>
 
     <span class="token keyword">int</span> page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//行地址（相当于页地址）</span></code></pre>
-<h3 id="2-5-NAND等待就绪"><a href="#2-5-NAND等待就绪" class="headerlink" title="2.5 NAND等待就绪"></a>2.5 NAND等待就绪</h3><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_nfcon.png" alt=""></p>
+<h3 id="2-5-NAND等待就绪"><a href="#2-5-NAND等待就绪" class="headerlink" title="2.5 NAND等待就绪"></a>2.5 NAND等待就绪</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_nfcon.png" alt=""></p>
 <ul>
 <li>当NFSATA[0] = 0时，表示正忙</li>
 <li>当NFSATA[0] = 1时，表示就绪<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 等待NAND就绪 */</span>
@@ -755,8 +755,8 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span></code></pre>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_bin_data.png" alt=""></p>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_read_test2.png" alt=""><br>由上测试可知读取成功</p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_bin_data.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_read_test2.png" alt=""><br>由上测试可知读取成功</p>
 <h2 id="3-擦除"><a href="#3-擦除" class="headerlink" title="3.擦除"></a>3.擦除</h2><h3 id="3-1-擦除时序"><a href="#3-1-擦除时序" class="headerlink" title="3.1 擦除时序"></a>3.1 擦除时序</h3><ul>
 <li>1.发出片选信号</li>
 <li>2.发出0x60命令</li>
@@ -765,7 +765,7 @@
 <li>5.等待就绪（等待擦除完成）</li>
 <li>6.禁止片选</li>
 </ul>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_erase_timing.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_erase_timing.png" alt=""></p>
 <h3 id="3-2-地址和参数合法性"><a href="#3-2-地址和参数合法性" class="headerlink" title="3.2 地址和参数合法性"></a>3.2 地址和参数合法性</h3><ul>
 <li>由于按块来擦除（128KB），因此地址和参数都必须是128K的倍数</li>
 <li><pre class=" language-c"><code class="language-c">  <span class="token comment" spellcheck="true">/* 检查参数合法性 */</span>
@@ -846,7 +846,7 @@
          <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** Erase fail!\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
      <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_erase_test.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_erase_test.png" alt=""></p>
 <h2 id="4-写数据"><a href="#4-写数据" class="headerlink" title="4.写数据"></a>4.写数据</h2><h3 id="4-1-写数据时序"><a href="#4-1-写数据时序" class="headerlink" title="4.1 写数据时序"></a>4.1 写数据时序</h3><ul>
 <li>1.发出片选信号</li>
 <li>2.发出0x80命令</li>
@@ -854,7 +854,7 @@
 <li>4.写入数据</li>
 <li>5.再发送0x10命令</li>
 <li>6.等待就绪（等待擦除完成）</li>
-<li>7.禁止片选<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_wriet_timing.png" alt=""></li>
+<li>7.禁止片选<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_wriet_timing.png" alt=""></li>
 </ul>
 <h3 id="4-2-写数据函数"><a href="#4-2-写数据函数" class="headerlink" title="4.2 写数据函数"></a>4.2 写数据函数</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* NAND FLASH写入数据
  * param:写入的地址、数据指针、写入的长度
@@ -916,10 +916,10 @@
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** writing finished\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <ul>
-<li>在<code>0x100000</code>地址写入“hello,world!”<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_write_test.png" alt=""></li>
-<li>读取数据<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_read_test3.png" alt=""></li>
+<li>在<code>0x100000</code>地址写入“hello,world!”<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_write_test.png" alt=""></li>
+<li>读取数据<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_read_test3.png" alt=""></li>
 </ul>
-<h2 id="5-判断是否为坏块"><a href="#5-判断是否为坏块" class="headerlink" title="5.判断是否为坏块"></a>5.判断是否为坏块</h2><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/nand_data_store.png" alt=""></p>
+<h2 id="5-判断是否为坏块"><a href="#5-判断是否为坏块" class="headerlink" title="5.判断是否为坏块"></a>5.判断是否为坏块</h2><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_data_store.png" alt=""></p>
 <blockquote>
 <p>通过读取OOB区的第0个字节（即第<code>2048</code>个字节）来判断，如果不是0xFF，为坏块，否则不是</p>
 </blockquote>
@@ -1038,12 +1038,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/ARM9/">
-                                    <span class="chip bg-color">ARM9</span>
-                                </a>
-                            
                                 <a href="/tags/Nand/">
                                     <span class="chip bg-color">Nand</span>
+                                </a>
+                            
+                                <a href="/tags/ARM9/">
+                                    <span class="chip bg-color">ARM9</span>
                                 </a>
                             
                         </div>
@@ -1216,7 +1216,7 @@
                 <a href="/2019/12/31/s3c2440-lcd/">
                     <div class="card-image">
                         
-                        <img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_scan.gif" class="responsive-img" alt="LCD硬件原理及初始化">
+                        <img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_scan.gif" class="responsive-img" alt="LCD硬件原理及初始化">
                         
                         <span class="card-title">LCD硬件原理及初始化</span>
                     </div>
@@ -1246,12 +1246,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/LCD/">
-                        <span class="chip bg-color">LCD</span>
-                    </a>
-                    
                     <a href="/tags/ARM9/">
                         <span class="chip bg-color">ARM9</span>
+                    </a>
+                    
+                    <a href="/tags/LCD/">
+                        <span class="chip bg-color">LCD</span>
                     </a>
                     
                 </div>
@@ -1268,7 +1268,7 @@
                 <a href="/2019/12/25/websites/">
                     <div class="card-image">
                         
-                        <img src="http://q3996b08i.bkt.clouddn.com/embedded-study/img_picture1.png" class="responsive-img" alt="实用的网站及工具">
+                        <img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/img_picture1.png" class="responsive-img" alt="实用的网站及工具">
                         
                         <span class="card-title">实用的网站及工具</span>
                     </div>

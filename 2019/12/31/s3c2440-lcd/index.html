@@ -304,7 +304,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_scan.gif')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_scan.gif')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -426,12 +426,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/LCD/">
-                                <span class="chip bg-color">LCD</span>
-                            </a>
-                        
                             <a href="/tags/ARM9/">
                                 <span class="chip bg-color">ARM9</span>
+                            </a>
+                        
+                            <a href="/tags/LCD/">
+                                <span class="chip bg-color">LCD</span>
                             </a>
                         
                     </div>
@@ -462,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-01-05
+                    2020-01-10
                 </div>
                 
 
@@ -495,17 +495,17 @@
                 <h2 id="1-LCD与OLED的区别"><a href="#1-LCD与OLED的区别" class="headerlink" title="1.LCD与OLED的区别"></a>1.LCD与OLED的区别</h2><ul>
 <li><p><strong>LCD背光源与OLED自发光</strong></p>
 </li>
-<li><p>LCD无机材料，LCD寿命较长。OLED广视角、几乎无穷高的对比度、可以弯曲、较低耗电优点。<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd&amp;oled.png" alt="LCD与OLED结构差异"></p>
+<li><p>LCD无机材料，LCD寿命较长。OLED广视角、几乎无穷高的对比度、可以弯曲、较低耗电优点。<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd&amp;oled.png" alt="LCD与OLED结构差异"></p>
 </li>
 </ul>
 <h2 id="2-LCD原理"><a href="#2-LCD原理" class="headerlink" title="2.LCD原理"></a>2.LCD原理</h2><ul>
 <li>屏幕上的每一个点称为像素</li>
-<li>每个像素点由RGB三原色组成<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_scan.gif" alt="LCD Display a picture"></li>
+<li>每个像素点由RGB三原色组成<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_scan.gif" alt="LCD Display a picture"></li>
 </ul>
 <h3 id="2-1-颜色如何确定？"><a href="#2-1-颜色如何确定？" class="headerlink" title="2.1 颜色如何确定？"></a>2.1 颜色如何确定？</h3><ul>
 <li>由RGB三组信号线组成</li>
 <li>由下原理图可知：R5条、G6条，B5条，即<code>RGB565</code>（彩色模式, <strong>一个像素占两个字节</strong>）</li>
-<li>因此其每个像素占用多少位（<strong>BBP</strong>：bit per piexl）为2个字节<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_circuit.png" alt=""></li>
+<li>因此其每个像素占用多少位（<strong>BBP</strong>：bit per piexl）为2个字节<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_circuit.png" alt=""></li>
 </ul>
 <h3 id="2-2-LCD如何“行扫描”？"><a href="#2-2-LCD如何“行扫描”？" class="headerlink" title="2.2 LCD如何“行扫描”？"></a>2.2 LCD如何“行扫描”？</h3><ul>
 <li>有一条CLK时钟线与LCD相连，每发出一次CLK(高低电平)，就移动一个像素。</li>
@@ -520,11 +520,11 @@
 <blockquote>
 <p>注意：RGB数据线上的数据从何而来？<br>内存里面手动划分一块显存(FrameBuffer)，里面存放了要显示的数据，LCD控制器从里面将数据读出来，通过RGB三组线传给LCD，再依次打到显示屏上。</p>
 </blockquote>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_pin.png" alt="信号引脚标"></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_pin.png" alt="信号引脚标"></p>
 <h2 id="3-LCD时序"><a href="#3-LCD时序" class="headerlink" title="3.LCD时序"></a>3.LCD时序</h2><ul>
 <li>分辨率 = Hsync的个数 * 一行中的有效CLK</li>
 </ul>
-<p>完整时序图：<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_timing_diagram.png" alt="完整时序图"><br>形象时序图：<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_timing_xy.png" alt="形象时序图"></p>
+<p>完整时序图：<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_timing_diagram.png" alt="完整时序图"><br>形象时序图：<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_timing_xy.png" alt="形象时序图"></p>
 <blockquote>
 <p>以上两张图可以解释LCD控制时序中的<code>Hsync</code>与<code>Vsync</code>的协同（可以理解 一帧是一个垂直同步信号、一行是一个水平同步信号）</p>
 <ul>
@@ -542,11 +542,11 @@
 <li>1.取数据：把<code>FrameBuffer</code>的地址、<code>bpp</code>、<code>分辨率</code>告诉LCD控制器</li>
 <li>2.发数据：把时序告诉LCD控制器、并设置引脚的极性（本款是下降沿取数据，但是有的LCD是上升沿有效，因此需要设置极性）</li>
 </ul>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_controller_diagram.png" alt="LCD结构图"></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_controller_diagram.png" alt="LCD结构图"></p>
 <h3 id="4-1-像素数据格式"><a href="#4-1-像素数据格式" class="headerlink" title="4.1 像素数据格式"></a>4.1 像素数据格式</h3><ul>
-<li>使用的像素数格式如下：16BPP<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_data_format.png" alt="16BPP内存数据格式"></li>
+<li>使用的像素数格式如下：16BPP<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_data_format.png" alt="16BPP内存数据格式"></li>
 </ul>
-<p>565数据格式引脚连接图：<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/565_format_pin.png" alt="565数据格式引脚连接图"></p>
+<p>565数据格式引脚连接图：<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/565_format_pin.png" alt="565数据格式引脚连接图"></p>
 <h3 id="4-2-调色板"><a href="#4-2-调色板" class="headerlink" title="4.2 调色板"></a>4.2 调色板</h3><ul>
 <li>本应该用<code>FrameBuffer</code>中用16bit表示1像素，可以用8bit存放在<code>FrameBuffer</code>来省空间</li>
 <li>8bit存放的是调色板中颜色的索引（共256中16bit颜色）<blockquote>
@@ -554,8 +554,8 @@
 </blockquote>
 </li>
 </ul>
-<p>调色板工作示意图<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_palette.png" alt="调色板工作示意图"><br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_8bpp_fornat.png" alt="调色板8BPP"></p>
-<h2 id="5-编程框架"><a href="#5-编程框架" class="headerlink" title="5.编程框架"></a>5.编程框架</h2><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_program_framework.png" alt="LCD编程框架"></p>
+<p>调色板工作示意图<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_palette.png" alt="调色板工作示意图"><br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_8bpp_fornat.png" alt="调色板8BPP"></p>
+<h2 id="5-编程框架"><a href="#5-编程框架" class="headerlink" title="5.编程框架"></a>5.编程框架</h2><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_program_framework.png" alt="LCD编程框架"></p>
 <p>面向对象编程<br>参数层：</p>
 <ul>
 <li>1.抽象出（不同设备）共同的参数结构体</li>
@@ -567,7 +567,7 @@
 <li>1.抽象不同平台的LCD控制器结构体</li>
 <li>2.上层的LCD控制器结构体指针指向所需的结构体</li>
 </ul>
-<h2 id="6-结构体参数"><a href="#6-结构体参数" class="headerlink" title="6. 结构体参数"></a>6. 结构体参数</h2><h3 id="6-1-引脚极性结构体"><a href="#6-1-引脚极性结构体" class="headerlink" title="6.1 引脚极性结构体"></a>6.1 引脚极性结构体</h3><p>由上<a href="#3.LCD时序">3.LCD时序</a>可知几个重要的信号引脚：<code>Hsync</code>、<code>Vsync</code> 、<code>CLK</code>、<code>Dn</code>：<code>Hsync</code>、<code>Vsync</code> 、<code>CLK</code>、<code>Dn</code><br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/pins_polarity_reg.png" alt="引脚极性寄存器"></p>
+<h2 id="6-结构体参数"><a href="#6-结构体参数" class="headerlink" title="6. 结构体参数"></a>6. 结构体参数</h2><h3 id="6-1-引脚极性结构体"><a href="#6-1-引脚极性结构体" class="headerlink" title="6.1 引脚极性结构体"></a>6.1 引脚极性结构体</h3><p>由上<a href="#3.LCD时序">3.LCD时序</a>可知几个重要的信号引脚：<code>Hsync</code>、<code>Vsync</code> 、<code>CLK</code>、<code>Dn</code>：<code>Hsync</code>、<code>Vsync</code> 、<code>CLK</code>、<code>Dn</code><br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/pins_polarity_reg.png" alt="引脚极性寄存器"></p>
 <pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 引脚极性结构体
  * NORMAL：正常极性
  * INVERT：反转极性
@@ -604,7 +604,7 @@
     <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>disable<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//禁止 </span>
 
 <span class="token punctuation">}</span>lcd_controller<span class="token punctuation">,</span><span class="token operator">*</span>p_lcd_controller<span class="token punctuation">;</span></code></pre>
-<h2 id="8-LCD控制器初始化"><a href="#8-LCD控制器初始化" class="headerlink" title="8.LCD控制器初始化"></a>8.LCD控制器初始化</h2><p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_timing_conditions.png" alt="LCD时序时间表"></p>
+<h2 id="8-LCD控制器初始化"><a href="#8-LCD控制器初始化" class="headerlink" title="8.LCD控制器初始化"></a>8.LCD控制器初始化</h2><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_timing_conditions.png" alt="LCD时序时间表"></p>
 <h3 id="8-1-LCDCON1"><a href="#8-1-LCDCON1" class="headerlink" title="8.1 LCDCON1"></a>8.1 LCDCON1</h3><pre class=" language-c"><code class="language-c">    <span class="token comment" spellcheck="true">/* LCDCON1[17:8] : CLKVAL, vclk = HCLK/[(CLKVAL+1)*2] 
      *                              = 100M/[(CLKVAL+1)*2]
      *                           CLKVAL = 100/vclk/2 - 1 , vclk
@@ -618,7 +618,7 @@
                   <span class="token number">0x0D</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//24bpp </span>
 
     LCDCON1 <span class="token operator">=</span> <span class="token punctuation">(</span>clkval <span class="token operator">&lt;&lt;</span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">&lt;&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>bppmode <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcdcon1.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon1.png" alt=""></p>
 <h2 id="7-初始化LCD引脚"><a href="#7-初始化LCD引脚" class="headerlink" title="7.初始化LCD引脚"></a>7.初始化LCD引脚</h2><ul>
 <li>初始LCD专用引脚，配置其模式：<code>LCD Data</code> 与 <code>LCD Control</code></li>
 </ul>
@@ -639,10 +639,10 @@
 <blockquote>
 <p>为了方便GPC、GPD两组，都设置为LCD专用引脚为 0xAAAAAAAA</p>
 </blockquote>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_mode_pins.png" alt=""><br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/gpdcon1.png" alt=""><br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/gpccon1.png" alt=""><br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_pwren_pin.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_mode_pins.png" alt=""><br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/gpdcon1.png" alt=""><br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/gpccon1.png" alt=""><br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_pwren_pin.png" alt=""></p>
 <hr>
 <ul>
-<li>由下图S3C2440 LCD控制器时序可得，在设置寄存器时需要在时间参数上-1<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/s3c2440_lcd_timing.png" alt=""><h3 id="8-2-LCDCON2"><a href="#8-2-LCDCON2" class="headerlink" title="8.2 LCDCON2"></a>8.2 LCDCON2</h3><pre class=" language-c"><code class="language-c">  <span class="token comment" spellcheck="true">/*  垂直
+<li>由下图S3C2440 LCD控制器时序可得，在设置寄存器时需要在时间参数上-1<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/s3c2440_lcd_timing.png" alt=""><h3 id="8-2-LCDCON2"><a href="#8-2-LCDCON2" class="headerlink" title="8.2 LCDCON2"></a>8.2 LCDCON2</h3><pre class=" language-c"><code class="language-c">  <span class="token comment" spellcheck="true">/*  垂直
    *  [31:24] ：VBPD    = Tvb - 1
    *  [23:14] ：LINEVAL = line - 1  行数值
    *  [13:6]  ：VFPD    = Tvf - 1 
@@ -654,7 +654,7 @@
               <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>time_seq<span class="token punctuation">.</span>tvp <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </li>
 </ul>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcdcon2_2.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon2_2.png" alt=""></p>
 <h3 id="8-3-LCDCON3"><a href="#8-3-LCDCON3" class="headerlink" title="8.3 LCDCON3"></a>8.3 LCDCON3</h3><pre class=" language-c"><code class="language-c">    <span class="token comment" spellcheck="true">/*  水平            
      *  [31:19] ：HBPD    = Thb - 1
      *  [18:8]  ：HOZVAL  = 列 - 1  横向像素点
@@ -663,11 +663,11 @@
     LCDCON3 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>time_seq<span class="token punctuation">.</span>thb <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">19</span><span class="token punctuation">)</span> <span class="token operator">|</span> \
               <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>xres <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">8</span><span class="token punctuation">)</span>             <span class="token operator">|</span> \
               <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>time_seq<span class="token punctuation">.</span>thf <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcdcon3.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon3.png" alt=""></p>
 <h3 id="8-4-LCDCON4"><a href="#8-4-LCDCON4" class="headerlink" title="8.4 LCDCON4"></a>8.4 LCDCON4</h3><pre class=" language-c"><code class="language-c">    <span class="token comment" spellcheck="true">/*  [23:14] ：HSPW = thp - 1  行脉冲宽度
      */</span>
     LCDCON4 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>time_seq<span class="token punctuation">.</span>thp <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcdcon4.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon4.png" alt=""></p>
 <h3 id="8-5-LCDCON5"><a href="#8-5-LCDCON5" class="headerlink" title="8.5 LCDCON5"></a>8.5 LCDCON5</h3><pre class=" language-c"><code class="language-c">    <span class="token comment" spellcheck="true">/* 用来设置引脚极性, 设置16bpp数据格式, 设置内存中象素存放的格式
      * [12] : BPP24BL,This bit determines the order of 24 bpp video memory.
      * [11] : FRM565, 1-565
@@ -694,15 +694,15 @@
               <span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>pins_pol<span class="token punctuation">.</span>de<span class="token operator">&lt;&lt;</span><span class="token number">6</span><span class="token punctuation">)</span>    <span class="token operator">|</span>\
               <span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>pins_pol<span class="token punctuation">.</span>pwren<span class="token operator">&lt;&lt;</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">|</span>\
               <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token operator">|</span> pixelformat<span class="token punctuation">;</span></code></pre>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcdcon5_1.png" alt=""><br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcdcon5_2.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon5_1.png" alt=""><br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon5_2.png" alt=""></p>
 <h3 id="8-6-LCDSADDR"><a href="#8-6-LCDSADDR" class="headerlink" title="8.6 LCDSADDR"></a>8.6 LCDSADDR</h3><ul>
 <li>由下图可知：是将fb_base的[30:1]直接写入LCDSADDR1寄存器</li>
 </ul>
 <blockquote>
-<p>起始地址<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcdsaddr1.png" alt=""></p>
+<p>起始地址<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdsaddr1.png" alt=""></p>
 </blockquote>
 <blockquote>
-<p>结束地址 = 起始地址 + x * y * bpp/8<br>即为：起始地址+一帧所占空间大小<br><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcdsaddr2.png" alt=""></p>
+<p>结束地址 = 起始地址 + x * y * bpp/8<br>即为：起始地址+一帧所占空间大小<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdsaddr2.png" alt=""></p>
 </blockquote>
 <h2 id="9-构造LCD参数结构体"><a href="#9-构造LCD参数结构体" class="headerlink" title="9.构造LCD参数结构体"></a>9.构造LCD参数结构体</h2><blockquote>
 <p>对于该款4.3寸LCD而言的参数设置</p>
@@ -738,7 +738,7 @@ lcd_params lcd_4_3_params<span class="token punctuation">{</span>
     <span class="token punctuation">.</span>bpp  <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">/* 16bit */</span>
     <span class="token punctuation">.</span>fb_base<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<p><img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_timing_params.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_timing_params.png" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -820,12 +820,12 @@ lcd_params lcd_4_3_params<span class="token punctuation">{</span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/LCD/">
-                                    <span class="chip bg-color">LCD</span>
-                                </a>
-                            
                                 <a href="/tags/ARM9/">
                                     <span class="chip bg-color">ARM9</span>
+                                </a>
+                            
+                                <a href="/tags/LCD/">
+                                    <span class="chip bg-color">LCD</span>
                                 </a>
                             
                         </div>
@@ -999,7 +999,7 @@ lcd_params lcd_4_3_params<span class="token punctuation">{</span>
                 <a href="/2019/12/31/s3c2440-lcd/">
                     <div class="card-image">
                         
-                        <img src="http://q3996b08i.bkt.clouddn.com/embedded-study/lcd_scan.gif" class="responsive-img" alt="LCD硬件原理及初始化">
+                        <img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_scan.gif" class="responsive-img" alt="LCD硬件原理及初始化">
                         
                         <span class="card-title">LCD硬件原理及初始化</span>
                     </div>
@@ -1030,12 +1030,12 @@ lcd_params lcd_4_3_params<span class="token punctuation">{</span>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/LCD/">
-                        <span class="chip bg-color">LCD</span>
-                    </a>
-                    
                     <a href="/tags/ARM9/">
                         <span class="chip bg-color">ARM9</span>
+                    </a>
+                    
+                    <a href="/tags/LCD/">
+                        <span class="chip bg-color">LCD</span>
                     </a>
                     
                 </div>
@@ -1052,7 +1052,7 @@ lcd_params lcd_4_3_params<span class="token punctuation">{</span>
                 <a href="/2019/12/27/s3c2440-nand/">
                     <div class="card-image">
                         
-                        <img src="http://q3996b08i.bkt.clouddn.com/embedded-study/img_cirtuit.jpg" class="responsive-img" alt="Nand Flash编程">
+                        <img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/img_cirtuit.jpg" class="responsive-img" alt="Nand Flash编程">
                         
                         <span class="card-title">Nand Flash编程</span>
                     </div>
@@ -1082,12 +1082,12 @@ lcd_params lcd_4_3_params<span class="token punctuation">{</span>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ARM9/">
-                        <span class="chip bg-color">ARM9</span>
-                    </a>
-                    
                     <a href="/tags/Nand/">
                         <span class="chip bg-color">Nand</span>
+                    </a>
+                    
+                    <a href="/tags/ARM9/">
+                        <span class="chip bg-color">ARM9</span>
                     </a>
                     
                 </div>
