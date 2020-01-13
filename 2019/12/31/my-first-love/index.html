@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello Hexo, 淹死的鱼">
-    <meta name="description" content="Hexo博客搭建过程记录">
+    <meta name="keywords" content="..., 淹死的鱼">
+    <meta name="description" content="...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello Hexo | 淹死的鱼</title>
+    <title>... | 淹死的鱼</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,7 +304,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = '1c5863cd55b5a4413fd59f054af57ba3c75c0698b3851d70f99b8de2d5c7338f';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -317,12 +317,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://q3996b08i.bkt.clouddn.com/embedded-study/hexo_github.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello Hexo</h1>
+                    <h1 class="description center-align post-title">...</h1>
                 </div>
             </div>
         </div>
@@ -439,8 +439,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                                <span class="chip bg-color">笔记</span>
+                            <a href="/tags/%E7%94%9F%E6%B4%BB/">
+                                <span class="chip bg-color">生活</span>
                             </a>
                         
                     </div>
@@ -451,8 +451,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
-                                笔记
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                生活
                             </a>
                         
                     </div>
@@ -464,28 +464,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-24
+                    2019-12-31
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-01-10
+                    2020-01-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    509
+                    52
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 				
@@ -501,71 +501,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-参考资源"><a href="#1-参考资源" class="headerlink" title="1.参考资源"></a>1.参考资源</h2><ul>
-<li><a href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">Github Hexo</a></li>
-<li><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo 官网</a></li>
-</ul>
-<h2 id="2-安装软件"><a href="#2-安装软件" class="headerlink" title="2.安装软件"></a>2.安装软件</h2><h3 id="2-1-Windows"><a href="#2-1-Windows" class="headerlink" title="2.1 Windows"></a>2.1 Windows</h3><ul>
-<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git下载官网</a></li>
-<li><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">nodejs下载官网</a></li>
-</ul>
-<h3 id="2-2-Linux"><a href="#2-2-Linux" class="headerlink" title="2.2 Linux"></a>2.2 Linux</h3><ul>
-<li><code>git</code></li>
-</ul>
-<pre><code>sudo apt-get install git</code></pre><ul>
-<li><code>Nodejs</code></li>
-</ul>
-<pre><code>sudo apt-get install nodejs</code></pre><blockquote>
-<p>安装完成,查看版本号,可检查是否安装成功</p>
-</blockquote>
-<ul>
-<li><code>node -v</code></li>
-<li><code>npm -v</code></li>
-</ul>
-<h2 id="3-安装Hexo"><a href="#3-安装Hexo" class="headerlink" title="3.安装Hexo"></a>3.安装Hexo</h2><blockquote>
-<p>以下命令都在<code>git bash</code>中输入运行</p>
-</blockquote>
-<ul>
-<li>cd至需要创建的文件夹blog下，安装Hexo（Windows在<code>git bash</code>窗口中输入）</li>
-</ul>
-<pre><code>npm install -g hexo-cli  </code></pre><h2 id="4-快速创建"><a href="#4-快速创建" class="headerlink" title="4.快速创建"></a>4.快速创建</h2><h3 id="4-1-初始化博客"><a href="#4-1-初始化博客" class="headerlink" title="4.1 初始化博客"></a>4.1 初始化博客</h3><pre><code>hexo init blog</code></pre><ul>
-<li>切换至博客目录</li>
-</ul>
-<pre><code>cd blog</code></pre><h3 id="4-2-创建文章"><a href="#4-2-创建文章" class="headerlink" title="4.2 创建文章"></a>4.2 创建文章</h3><pre><code>hexo new "Hello Hexo"</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="4-3-生成静态文章"><a href="#4-3-生成静态文章" class="headerlink" title="4.3 生成静态文章"></a>4.3 生成静态文章</h3><pre><code>hexo generate</code></pre><ul>
-<li>可简写为<code>hexo g</code></li>
-</ul>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="4-4-启动服务"><a href="#4-4-启动服务" class="headerlink" title="4.4 启动服务"></a>4.4 启动服务</h3><blockquote>
-<p>在预览时才需要用】启动hexo,会生成本地连接:localhost:4000<br>如果4000端口被占用可以用：hexo server -p 5000(指定端口5000)</p>
-</blockquote>
-<pre><code>hexo server</code></pre><ul>
-<li>可简写为<code>hexo s</code><br>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></li>
-</ul>
-<h3 id="4-5-部署文章"><a href="#4-5-部署文章" class="headerlink" title="4.5 部署文章"></a>4.5 部署文章</h3><pre class=" language-c"><code class="language-c">hexo deploy</code></pre>
-<ul>
-<li>可简写为<code>hexo d</code><br>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></li>
-</ul>
-<h2 id="5-更换主题"><a href="#5-更换主题" class="headerlink" title="5.更换主题"></a>5.更换主题</h2><h3 id="5-1-下载"><a href="#5-1-下载" class="headerlink" title="5.1 下载"></a>5.1 下载</h3><p>点击不同的主题的代码，将其文件夹复制到你 Hexo 的 themes 文件夹中即可<br><strong>推荐的主题：</strong></p>
-<ul>
-<li><a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener">matery</a></li>
-<li><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">yilia</a></li>
-</ul>
-<h3 id="5-2-更换主题"><a href="#5-2-更换主题" class="headerlink" title="5.2 更换主题"></a>5.2 更换主题</h3><blockquote>
-<p>初始化默认主题为landscape</p>
-</blockquote>
-<p>切换主题修改 Hexo 根目录下的 <code>_config.yml</code> 的 <code>theme</code> 的值：theme: <code>hexo-theme-matery</code></p>
-<p><code>_config.yml</code>文件的其它修改建议:</p>
-<ul>
-<li>请修改 _config.yml 的 url 的值为你的网站主 URL（如：<a href="http://xxx.github.io）" target="_blank" rel="noopener">http://xxx.github.io）</a></li>
-<li>建议修改两个 per_page 的分页条数值为 6 的倍数，如：12、18 等，这样文章列表在各个屏幕下都能较好的显示</li>
-<li>如果你是中文用户，则建议修改 language 的值为 zh-CN</li>
-</ul>
-<h2 id="6-绑定域名CNAME"><a href="#6-绑定域名CNAME" class="headerlink" title="6.绑定域名CNAME"></a>6.绑定域名CNAME</h2><ul>
-<li>当你点击保存的时候 Github Pages 会自动帮你生成一个 CNAME 的文件在根目录，里面的内容就是你绑定的域名地址</li>
-</ul>
-<p><img src="https://ina-blog.oss-cn-shanghai.aliyuncs.com/CNAME.png" alt=""></p>
-<script>
+                <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -608,7 +544,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zengwangfa.top/2019/07/24/hello-world/">https://zengwangfa.top/2019/07/24/hello-world/</a>
+                    <a href="https://zengwangfa.top/2019/12/31/my-first-love/">https://zengwangfa.top/2019/12/31/my-first-love/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -646,8 +582,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                                    <span class="chip bg-color">笔记</span>
+                                <a href="/tags/%E7%94%9F%E6%B4%BB/">
+                                    <span class="chip bg-color">生活</span>
                                 </a>
                             
                         </div>
@@ -817,30 +753,30 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/01/dji-offer/">
+                <a href="/2019/12/31/s3c2440-lcd/">
                     <div class="card-image">
                         
-                        <img src="https://ina-blog.oss-cn-shanghai.aliyuncs.com/DJI_offer1.png" class="responsive-img" alt="DJI大疆嵌入式秋招记录">
+                        <img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_scan.gif" class="responsive-img" alt="LCD硬件原理及初始化">
                         
-                        <span class="card-title">DJI大疆嵌入式秋招记录</span>
+                        <span class="card-title">LCD硬件原理及初始化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            2020大疆秋招嵌入式完整流程整理
+                            S3C2440 LCD硬件原理及初始化
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-31
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%B0%E5%BD%95/" class="post-category">
-                                    记录
+                            <a href="/categories/S3C2440/" class="post-category">
+                                    S3C2440
                                 </a>
                             
                             
@@ -850,8 +786,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%B0%E5%BD%95/">
-                        <span class="chip bg-color">记录</span>
+                    <a href="/tags/LCD/">
+                        <span class="chip bg-color">LCD</span>
+                    </a>
+                    
+                    <a href="/tags/ARM9/">
+                        <span class="chip bg-color">ARM9</span>
                     </a>
                     
                 </div>
@@ -865,30 +805,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/06/28/the-three-body-problem-x/">
+                <a href="/2019/12/27/s3c2440-nand/">
                     <div class="card-image">
                         
-                        <img src="https://ina-blog.oss-cn-shanghai.aliyuncs.com/galaxy1.jpg" class="responsive-img" alt="观想之宙">
+                        <img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/img_cirtuit.jpg" class="responsive-img" alt="Nand Flash编程">
                         
-                        <span class="card-title">观想之宙</span>
+                        <span class="card-title">Nand Flash编程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            我看到了我的爱恋
+                            S3C2440 Nand Flash编程
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-06-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%98%85%E8%AF%BB/" class="post-category">
-                                    阅读
+                            <a href="/categories/S3C2440/" class="post-category">
+                                    S3C2440
                                 </a>
                             
                             
@@ -898,8 +838,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%98%85%E8%AF%BB/">
-                        <span class="chip bg-color">阅读</span>
+                    <a href="/tags/ARM9/">
+                        <span class="chip bg-color">ARM9</span>
+                    </a>
+                    
+                    <a href="/tags/Nand/">
+                        <span class="chip bg-color">Nand</span>
                     </a>
                     
                 </div>
