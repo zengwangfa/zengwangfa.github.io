@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://zengwangfa.top/2019/07/24/hello-world/</loc>
+    <lastmod>2020-02-05</lastmod>
+  </url>  <url>
+    <loc>https://zengwangfa.top/2019/09/01/2019-electronic-design-competition/</loc>
+    <lastmod>2020-02-05</lastmod>
+  </url>  <url>
     <loc>https://zengwangfa.top/2019/10/01/dji-offer/</loc>
     <lastmod>2020-01-20</lastmod>
   </url>  <url>
@@ -8,9 +14,6 @@
     <lastmod>2020-01-13</lastmod>
   </url>  <url>
     <loc>https://zengwangfa.top/2019/12/15/qiniu-picgo-img/</loc>
-    <lastmod>2020-01-10</lastmod>
-  </url>  <url>
-    <loc>https://zengwangfa.top/2019/07/24/hello-world/</loc>
     <lastmod>2020-01-10</lastmod>
   </url>  <url>
     <loc>https://zengwangfa.top/2019/12/27/s3c2440-nand/</loc>
