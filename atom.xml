@@ -39,9 +39,9 @@
       <category term="S3C2440" scheme="https://zengwangfa.top/categories/S3C2440/"/>
     
     
-      <category term="LCD" scheme="https://zengwangfa.top/tags/LCD/"/>
-    
       <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
+    
+      <category term="LCD" scheme="https://zengwangfa.top/tags/LCD/"/>
     
   </entry>
   
@@ -99,9 +99,9 @@
       <category term="S3C2440" scheme="https://zengwangfa.top/categories/S3C2440/"/>
     
     
-      <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
-    
       <category term="Nand" scheme="https://zengwangfa.top/tags/Nand/"/>
+    
+      <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
     
   </entry>
   
@@ -193,7 +193,7 @@
     <link href="https://zengwangfa.top/2019/09/01/2019-electronic-design-competition/"/>
     <id>https://zengwangfa.top/2019/09/01/2019-electronic-design-competition/</id>
     <published>2019-09-01T14:22:30.000Z</published>
-    <updated>2020-02-05T16:19:47.380Z</updated>
+    <updated>2020-02-07T04:05:28.089Z</updated>
     
     <summary type="html">
     
@@ -201,8 +201,7 @@
       
         
         
-          &lt;h1 id=&quot;纸张计数显示装置😄&quot;&gt;&lt;a href=&quot;#纸张计数显示装置😄&quot; class=&quot;headerlink&quot; title=&quot;纸张计数显示装置😄&quot;&gt;&lt;/a&gt;纸张计数显示装置😄&lt;/h1&gt;&lt;p align=&quot;center&quot;&gt;
-  &lt;a
+          &lt;h2 id=&quot;Github项目地址&quot;&gt;&lt;a href=&quot;#Github项目地址&quot; class=&quot;headerlink&quot; title=&quot;Github项目地址&quot;&gt;&lt;/a&gt;&lt;a
         
       
     
