@@ -20,9 +20,9 @@
       
         <tags>
             
-            <tag> ARM9 </tag>
-            
             <tag> LCD </tag>
+            
+            <tag> ARM9 </tag>
             
         </tags>
       
@@ -72,9 +72,9 @@
       
         <tags>
             
-            <tag> Nand </tag>
-            
             <tag> ARM9 </tag>
+            
+            <tag> Nand </tag>
             
         </tags>
       
