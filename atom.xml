@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>淹死的鱼</title>
+  <icon>https://www.gravatar.com/avatar/f2128986d0942dc31be18f9bf12c199a</icon>
+  <subtitle>淹死的鱼</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://zengwangfa.top/"/>
+  <updated>2021-03-21T02:58:42.552Z</updated>
+  <id>https://zengwangfa.top/</id>
+  
+  <author>
+    <name>淹死的鱼</name>
+    <email>zengwangfa@outlook.com</email>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>爱的自白</title>
+    <link href="https://zengwangfa.top/2021/03/31/my-first-love/"/>
+    <id>https://zengwangfa.top/2021/03/31/my-first-love/</id>
+    <published>2021-03-31T04:00:00.000Z</published>
+    <updated>2021-03-21T02:58:42.552Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+       
+        
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="https://zengwangfa.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="生活" scheme="https://zengwangfa.top/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LCD硬件原理及初始化</title>
+    <link href="https://zengwangfa.top/2019/12/31/s3c2440-lcd/"/>
+    <id>https://zengwangfa.top/2019/12/31/s3c2440-lcd/</id>
+    <published>2019-12-31T09:16:23.000Z</published>
+    <updated>2020-01-10T11:01:36.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-LCD与OLED的区别&quot;&gt;&lt;a href=&quot;#1-LCD与OLED的区别&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="S3C2440" scheme="https://zengwangfa.top/categories/S3C2440/"/>
+    
+    
+      <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
+    
+      <category term="LCD" scheme="https://zengwangfa.top/tags/LCD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nand Flash编程</title>
+    <link href="https://zengwangfa.top/2019/12/27/s3c2440-nand/"/>
+    <id>https://zengwangfa.top/2019/12/27/s3c2440-nand/</id>
+    <published>2019-12-27T12:39:46.000Z</published>
+    <updated>2020-01-10T11:01:56.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-读芯片ID&quot;&gt;&lt;a href=&quot;#1-读芯片ID&quot; class=&quot;headerlink&quot; title=&quot;1.读芯片ID&quot;&gt;&lt;/a&gt;1.读芯片ID&lt;/h2&gt;&lt;h3 id=&quot;1-1-读芯片ID时序&quot;&gt;&lt;a href=&quot;#1-1-读芯片ID时序&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="S3C2440" scheme="https://zengwangfa.top/categories/S3C2440/"/>
+    
+    
+      <category term="Nand" scheme="https://zengwangfa.top/tags/Nand/"/>
+    
+      <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>实用的网站及工具</title>
+    <link href="https://zengwangfa.top/2019/12/25/websites/"/>
+    <id>https://zengwangfa.top/2019/12/25/websites/</id>
+    <published>2019-12-25T13:48:26.000Z</published>
+    <updated>2020-01-10T11:01:50.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://ina-blog.oss-cn-shanghai.aliyuncs.com/web_logo.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;学习类&quot;&gt;&lt;a href=&quot;#学习类&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="https://zengwangfa.top/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="效率工具" scheme="https://zengwangfa.top/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用七牛云+PicGo进行图片管理与上传</title>
+    <link href="https://zengwangfa.top/2019/12/15/qiniu-picgo-img/"/>
+    <id>https://zengwangfa.top/2019/12/15/qiniu-picgo-img/</id>
+    <published>2019-12-15T11:19:23.000Z</published>
+    <updated>2020-01-10T11:02:02.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-注册七牛云账号&quot;&gt;&lt;a href=&quot;#1-注册七牛云账号&quot; class=&quot;headerlink&quot; title=&quot;1.注册七牛云账号&quot;&gt;&lt;/a&gt;1.注册七牛云账号&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="https://zengwangfa.top/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="效率工具" scheme="https://zengwangfa.top/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2019电赛——纸张计数显示装置</title>
+    <link href="https://zengwangfa.top/2019/09/01/2019-electronic-design-competition/"/>
+    <id>https://zengwangfa.top/2019/09/01/2019-electronic-design-competition/</id>
+    <published>2019-09-01T14:22:30.000Z</published>
+    <updated>2020-02-07T04:05:30.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Github项目地址&quot;&gt;&lt;a href=&quot;#Github项目地址&quot; class=&quot;headerlink&quot; title=&quot;Github项目地址&quot;&gt;&lt;/a&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="https://zengwangfa.top/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="记录" scheme="https://zengwangfa.top/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello Hexo</title>
+    <link href="https://zengwangfa.top/2019/07/24/hello-world/"/>
+    <id>https://zengwangfa.top/2019/07/24/hello-world/</id>
+    <published>2019-07-24T10:55:21.000Z</published>
+    <updated>2020-02-06T04:39:10.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-参考资源&quot;&gt;&lt;a href=&quot;#1-参考资源&quot; class=&quot;headerlink&quot; title=&quot;1.参考资源&quot;&gt;&lt;/a&gt;1.参考资源&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/hexojs/hexo&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="https://zengwangfa.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="笔记" scheme="https://zengwangfa.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>观想之宙</title>
+    <link href="https://zengwangfa.top/2019/06/28/the-three-body-problem-x/"/>
+    <id>https://zengwangfa.top/2019/06/28/the-three-body-problem-x/</id>
+    <published>2019-06-28T13:15:19.000Z</published>
+    <updated>2020-01-10T11:01:40.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;我看到了我的爱恋&lt;br&gt;我飞到她的身边&lt;br&gt;我捧出给她的礼物&lt;br&gt;那是一小块凝固的时间&lt;br&gt;时间上有美丽的条纹&lt;br&gt;摸起来像浅海的泥一样柔软&lt;br&gt;她把时间涂满全身&lt;br&gt;然后拉起我飞向存在的边缘&lt;br&gt;这是灵态的飞行&lt;br&gt;我们眼中的星星
+        
+      
+    
+    </summary>
+    
+    
+      <category term="阅读" scheme="https://zengwangfa.top/categories/%E9%98%85%E8%AF%BB/"/>
+    
+    
+      <category term="阅读" scheme="https://zengwangfa.top/tags/%E9%98%85%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MJPG-Streamer推流测试</title>
+    <link href="https://zengwangfa.top/2018/12/02/raspberry-mjpg/"/>
+    <id>https://zengwangfa.top/2018/12/02/raspberry-mjpg/</id>
+    <published>2018-12-02T08:17:57.000Z</published>
+    <updated>2020-01-10T11:01:30.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://github.com/jacksonliam/mjpg-streamer&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;mjpg-streamer
+        
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="https://zengwangfa.top/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="Raspberry Pi" scheme="https://zengwangfa.top/tags/Raspberry-Pi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSI摄像头推流</title>
+    <link href="https://zengwangfa.top/2018/11/28/raspberry-raspivid/"/>
+    <id>https://zengwangfa.top/2018/11/28/raspberry-raspivid/</id>
+    <published>2018-11-28T12:16:08.000Z</published>
+    <updated>2020-01-10T11:01:32.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://github.com/jacksonliam/mjpg-streamer&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;mjpg-streamer
+        
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="https://zengwangfa.top/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="Raspberry Pi" scheme="https://zengwangfa.top/tags/Raspberry-Pi/"/>
+    
+  </entry>
+  
+</feed>
