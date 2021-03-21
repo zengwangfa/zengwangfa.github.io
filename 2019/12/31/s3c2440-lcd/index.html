@@ -439,12 +439,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ARM9/">
-                                <span class="chip bg-color">ARM9</span>
-                            </a>
-                        
                             <a href="/tags/LCD/">
                                 <span class="chip bg-color">LCD</span>
+                            </a>
+                        
+                            <a href="/tags/ARM9/">
+                                <span class="chip bg-color">ARM9</span>
                             </a>
                         
                     </div>
@@ -475,14 +475,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-01-10
+                    2021-03-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2k
                 </div>
                 
 
@@ -625,7 +625,7 @@
       * [4:1]：bpp mode
       * [0]  ：LCD video output and the logic enable(1)/disable(0)
     */</span>
-    <span class="token keyword">int</span> clkval  <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span><span class="token number">100</span><span class="token operator">/</span>plcdparams<span class="token operator">-&gt;</span>time_seq<span class="token punctuation">.</span>vclk<span class="token operator">/</span><span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> clkval  <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span><span class="token number">100</span><span class="token operator">/</span>plcdparams<span class="token operator">-></span>time_seq<span class="token punctuation">.</span>vclk<span class="token operator">/</span><span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> bppmode <span class="token operator">=</span> <span class="token punctuation">(</span>plcdparams <span class="token operator">==</span>  <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">0x0B</span> <span class="token punctuation">:</span>\ <span class="token comment" spellcheck="true">//8bpp</span>
                   <span class="token punctuation">(</span>plcdparams <span class="token operator">==</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">0x0C</span> <span class="token punctuation">:</span>\ <span class="token comment" spellcheck="true">//16bpp</span>
                   <span class="token number">0x0D</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//24bpp </span>
@@ -661,10 +661,10 @@
    *  [13:6]  ：VFPD    = Tvf - 1 
    *  [5:0]    ：VSPW       = Tvp -1
    */</span>
-  LCDCON2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>time_seq<span class="token punctuation">.</span>tvb <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">24</span><span class="token punctuation">)</span> <span class="token operator">|</span> \
-            <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>yres <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">14</span><span class="token punctuation">)</span>         <span class="token operator">|</span> \
-            <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>time_seq<span class="token punctuation">.</span>tvf <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">6</span> <span class="token punctuation">)</span> <span class="token operator">|</span> \
-              <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>time_seq<span class="token punctuation">.</span>tvp <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+  LCDCON2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>time_seq<span class="token punctuation">.</span>tvb <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">24</span><span class="token punctuation">)</span> <span class="token operator">|</span> \
+            <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>yres <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">14</span><span class="token punctuation">)</span>         <span class="token operator">|</span> \
+            <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>time_seq<span class="token punctuation">.</span>tvf <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">6</span> <span class="token punctuation">)</span> <span class="token operator">|</span> \
+              <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>time_seq<span class="token punctuation">.</span>tvp <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </li>
 </ul>
 <p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon2_2.png" alt=""></p>
@@ -673,13 +673,13 @@
      *  [18:8]  ：HOZVAL  = 列 - 1  横向像素点
      *  [7:0]   ：HFPD    = Thf - 1 
      */</span>
-    LCDCON3 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>time_seq<span class="token punctuation">.</span>thb <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">19</span><span class="token punctuation">)</span> <span class="token operator">|</span> \
-              <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>xres <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">8</span><span class="token punctuation">)</span>             <span class="token operator">|</span> \
-              <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>time_seq<span class="token punctuation">.</span>thf <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    LCDCON3 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>time_seq<span class="token punctuation">.</span>thb <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">19</span><span class="token punctuation">)</span> <span class="token operator">|</span> \
+              <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>xres <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">8</span><span class="token punctuation">)</span>             <span class="token operator">|</span> \
+              <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>time_seq<span class="token punctuation">.</span>thf <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon3.png" alt=""></p>
 <h3 id="8-4-LCDCON4"><a href="#8-4-LCDCON4" class="headerlink" title="8.4 LCDCON4"></a>8.4 LCDCON4</h3><pre class=" language-c"><code class="language-c">    <span class="token comment" spellcheck="true">/*  [23:14] ：HSPW = thp - 1  行脉冲宽度
      */</span>
-    LCDCON4 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>time_seq<span class="token punctuation">.</span>thp <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    LCDCON4 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>time_seq<span class="token punctuation">.</span>thp <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon4.png" alt=""></p>
 <h3 id="8-5-LCDCON5"><a href="#8-5-LCDCON5" class="headerlink" title="8.5 LCDCON5"></a>8.5 LCDCON5</h3><pre class=" language-c"><code class="language-c">    <span class="token comment" spellcheck="true">/* 用来设置引脚极性, 设置16bpp数据格式, 设置内存中象素存放的格式
      * [12] : BPP24BL,This bit determines the order of 24 bpp video memory.
@@ -697,15 +697,15 @@
      * [0]  : HWSWP
      */</span>
 
-    pixelformat <span class="token operator">=</span> plcdparams<span class="token operator">-&gt;</span>pins_pol<span class="token punctuation">.</span>bpp <span class="token operator">==</span> <span class="token number">24</span> <span class="token operator">?</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">12</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> \<span class="token operator">/</span><span class="token operator">/</span>24bpp
-                  plcdparams<span class="token operator">-&gt;</span>pins_pol<span class="token punctuation">.</span>bpp <span class="token operator">==</span> <span class="token number">16</span> <span class="token operator">?</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> \ <span class="token comment" spellcheck="true">//16bpp</span>
+    pixelformat <span class="token operator">=</span> plcdparams<span class="token operator">-></span>pins_pol<span class="token punctuation">.</span>bpp <span class="token operator">==</span> <span class="token number">24</span> <span class="token operator">?</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">12</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> \<span class="token operator">/</span><span class="token operator">/</span>24bpp
+                  plcdparams<span class="token operator">-></span>pins_pol<span class="token punctuation">.</span>bpp <span class="token operator">==</span> <span class="token number">16</span> <span class="token operator">?</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> \ <span class="token comment" spellcheck="true">//16bpp</span>
                   <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//8ppp</span>
-    LCDCON5 <span class="token operator">=</span> <span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>pins_pol<span class="token punctuation">.</span>vclk<span class="token operator">&lt;&lt;</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">|</span>\
-              <span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>pins_pol<span class="token punctuation">.</span>hsync<span class="token operator">&lt;&lt;</span><span class="token number">9</span><span class="token punctuation">)</span> <span class="token operator">|</span>\
-              <span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>pins_pol<span class="token punctuation">.</span>vsync<span class="token operator">&lt;&lt;</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">|</span>\
-              <span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>pins_pol<span class="token punctuation">.</span>rgb<span class="token operator">&lt;&lt;</span><span class="token number">7</span><span class="token punctuation">)</span>   <span class="token operator">|</span>\
-              <span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>pins_pol<span class="token punctuation">.</span>de<span class="token operator">&lt;&lt;</span><span class="token number">6</span><span class="token punctuation">)</span>    <span class="token operator">|</span>\
-              <span class="token punctuation">(</span>plcdparams<span class="token operator">-&gt;</span>pins_pol<span class="token punctuation">.</span>pwren<span class="token operator">&lt;&lt;</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">|</span>\
+    LCDCON5 <span class="token operator">=</span> <span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>pins_pol<span class="token punctuation">.</span>vclk<span class="token operator">&lt;&lt;</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">|</span>\
+              <span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>pins_pol<span class="token punctuation">.</span>hsync<span class="token operator">&lt;&lt;</span><span class="token number">9</span><span class="token punctuation">)</span> <span class="token operator">|</span>\
+              <span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>pins_pol<span class="token punctuation">.</span>vsync<span class="token operator">&lt;&lt;</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">|</span>\
+              <span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>pins_pol<span class="token punctuation">.</span>rgb<span class="token operator">&lt;&lt;</span><span class="token number">7</span><span class="token punctuation">)</span>   <span class="token operator">|</span>\
+              <span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>pins_pol<span class="token punctuation">.</span>de<span class="token operator">&lt;&lt;</span><span class="token number">6</span><span class="token punctuation">)</span>    <span class="token operator">|</span>\
+              <span class="token punctuation">(</span>plcdparams<span class="token operator">-></span>pins_pol<span class="token punctuation">.</span>pwren<span class="token operator">&lt;&lt;</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">|</span>\
               <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token operator">|</span> pixelformat<span class="token punctuation">;</span></code></pre>
 <p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon5_1.png" alt=""><br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon5_2.png" alt=""></p>
 <h3 id="8-6-LCDSADDR"><a href="#8-6-LCDSADDR" class="headerlink" title="8.6 LCDSADDR"></a>8.6 LCDSADDR</h3><ul>
@@ -833,12 +833,12 @@ lcd_params lcd_4_3_params<span class="token punctuation">{</span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/ARM9/">
-                                    <span class="chip bg-color">ARM9</span>
-                                </a>
-                            
                                 <a href="/tags/LCD/">
                                     <span class="chip bg-color">LCD</span>
+                                </a>
+                            
+                                <a href="/tags/ARM9/">
+                                    <span class="chip bg-color">ARM9</span>
                                 </a>
                             
                         </div>
@@ -1011,8 +1011,7 @@ lcd_params lcd_4_3_params<span class="token punctuation">{</span>
                 <a href="/2021/03/31/my-first-love/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="爱的自白">
+                        <img src="https://zengwangfa.oss-cn-shanghai.aliyuncs.com/ftt/FTT_ZWF_PIC.png" class="responsive-img" alt="爱的自白">
                         
                         <span class="card-title">爱的自白</span>
                     </div>
@@ -1090,12 +1089,12 @@ lcd_params lcd_4_3_params<span class="token punctuation">{</span>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Nand/">
-                        <span class="chip bg-color">Nand</span>
-                    </a>
-                    
                     <a href="/tags/ARM9/">
                         <span class="chip bg-color">ARM9</span>
+                    </a>
+                    
+                    <a href="/tags/Nand/">
+                        <span class="chip bg-color">Nand</span>
                     </a>
                     
                 </div>
@@ -1244,7 +1243,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">12.5k</span>&nbsp;字
+                class="white-color">13k</span>&nbsp;字
             
             
             

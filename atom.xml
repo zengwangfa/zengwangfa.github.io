@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zengwangfa.top/"/>
-  <updated>2021-03-21T02:58:42.552Z</updated>
+  <updated>2021-03-21T05:41:44.147Z</updated>
   <id>https://zengwangfa.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://zengwangfa.top/2021/03/31/my-first-love/"/>
     <id>https://zengwangfa.top/2021/03/31/my-first-love/</id>
     <published>2021-03-31T04:00:00.000Z</published>
-    <updated>2021-03-21T02:58:42.552Z</updated>
+    <updated>2021-03-21T05:41:44.147Z</updated>
     
     <summary type="html">
     
@@ -29,11 +29,10 @@
       
         
         
-          &lt;script&gt;
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src) { return; }
-       
+          &lt;blockquote&gt;
+&lt;p&gt;昨晚才思泉涌，想尽表达爱意的方式，但当真正开始写这篇“爱的自白”，却不知从何写起。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;初见&quot;&gt;&lt;a href=&quot;#初见&quot; class=&quot;headerlink&quot;
         
       
     
@@ -52,7 +51,7 @@
     <link href="https://zengwangfa.top/2019/12/31/s3c2440-lcd/"/>
     <id>https://zengwangfa.top/2019/12/31/s3c2440-lcd/</id>
     <published>2019-12-31T09:16:23.000Z</published>
-    <updated>2020-01-10T11:01:36.000Z</updated>
+    <updated>2021-03-21T04:27:28.417Z</updated>
     
     <summary type="html">
     
@@ -70,9 +69,9 @@
       <category term="S3C2440" scheme="https://zengwangfa.top/categories/S3C2440/"/>
     
     
-      <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
-    
       <category term="LCD" scheme="https://zengwangfa.top/tags/LCD/"/>
+    
+      <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
     
   </entry>
   
@@ -99,9 +98,9 @@
       <category term="S3C2440" scheme="https://zengwangfa.top/categories/S3C2440/"/>
     
     
-      <category term="Nand" scheme="https://zengwangfa.top/tags/Nand/"/>
-    
       <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
+    
+      <category term="Nand" scheme="https://zengwangfa.top/tags/Nand/"/>
     
   </entry>
   
