@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zengwangfa.top/"/>
-  <updated>2021-03-26T17:03:29.320Z</updated>
+  <updated>2021-09-11T02:50:28.324Z</updated>
   <id>https://zengwangfa.top/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>爱的自白</title>
-    <link href="https://zengwangfa.top/2021/03/31/my-first-love/"/>
-    <id>https://zengwangfa.top/2021/03/31/my-first-love/</id>
-    <published>2021-03-31T04:00:00.000Z</published>
-    <updated>2021-03-26T17:03:29.320Z</updated>
+    <title>2021-9-10 夜</title>
+    <link href="https://zengwangfa.top/2021/09/11/2021-9-10-ye/"/>
+    <id>https://zengwangfa.top/2021/09/11/2021-9-10-ye/</id>
+    <published>2021-09-10T19:13:15.000Z</published>
+    <updated>2021-09-11T02:50:28.324Z</updated>
     
     <summary type="html">
     
@@ -29,20 +29,17 @@
       
         
         
-          &lt;blockquote&gt;
-&lt;p&gt;昨晚才思泉涌，想尽表达爱意的方式，但当真正开始写这篇“爱的自白”，却不知从何写起。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;初见&quot;&gt;&lt;a href=&quot;#初见&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;闯入&quot;&gt;&lt;a href=&quot;#闯入&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
     
-      <category term="生活" scheme="https://zengwangfa.top/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="记录" scheme="https://zengwangfa.top/categories/%E8%AE%B0%E5%BD%95/"/>
     
     
-      <category term="生活" scheme="https://zengwangfa.top/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="记录" scheme="https://zengwangfa.top/tags/%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
@@ -72,6 +69,37 @@
       <category term="LCD" scheme="https://zengwangfa.top/tags/LCD/"/>
     
       <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>...</title>
+    <link href="https://zengwangfa.top/2019/12/31/my-first-love/"/>
+    <id>https://zengwangfa.top/2019/12/31/my-first-love/</id>
+    <published>2019-12-31T04:00:00.000Z</published>
+    <updated>2021-09-11T02:12:09.794Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+       
+        
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="https://zengwangfa.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="生活" scheme="https://zengwangfa.top/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
@@ -157,6 +185,33 @@
     
     
       <category term="效率工具" scheme="https://zengwangfa.top/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DJI大疆嵌入式秋招记录</title>
+    <link href="https://zengwangfa.top/2019/10/01/dji-offer/"/>
+    <id>https://zengwangfa.top/2019/10/01/dji-offer/</id>
+    <published>2019-10-01T08:13:27.000Z</published>
+    <updated>2021-09-11T02:12:09.794Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://ina-blog.oss-cn-shanghai.aliyuncs.com/DJI_offer1.png&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="https://zengwangfa.top/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="记录" scheme="https://zengwangfa.top/tags/%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
