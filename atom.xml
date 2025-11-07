@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zengwangfa.top/"/>
-  <updated>2025-11-01T07:07:41.740Z</updated>
+  <updated>2025-11-02T07:16:10.471Z</updated>
   <id>https://zengwangfa.top/</id>
   
   <author>
@@ -17,15 +17,15 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>2025-10-25 夜</title>
-    <link href="https://zengwangfa.top/2025/10/25/2025-10-25/"/>
-    <id>https://zengwangfa.top/2025/10/25/2025-10-25/</id>
-    <published>2025-10-25T15:06:04.000Z</published>
-    <updated>2025-11-01T07:07:41.740Z</updated>
+    <title>夜</title>
+    <link href="https://zengwangfa.top/2025/10/25/ye/"/>
+    <id>https://zengwangfa.top/2025/10/25/ye/</id>
+    <published>2025-10-25T14:06:04.000Z</published>
+    <updated>2025-11-02T07:16:10.471Z</updated>
     
     <summary type="html">
     
-      这篇文章是加密的，请输入密码查看。
+      这篇文章需要密码才能查看
     
     </summary>
     
@@ -60,30 +60,9 @@
       <category term="S3C2440" scheme="https://zengwangfa.top/categories/S3C2440/"/>
     
     
-      <category term="LCD" scheme="https://zengwangfa.top/tags/LCD/"/>
-    
       <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
     
-  </entry>
-  
-  <entry>
-    <title>...</title>
-    <link href="https://zengwangfa.top/2019/12/31/my-first-love/"/>
-    <id>https://zengwangfa.top/2019/12/31/my-first-love/</id>
-    <published>2019-12-31T04:00:00.000Z</published>
-    <updated>2021-09-11T02:12:09.794Z</updated>
-    
-    <summary type="html">
-    
-      这篇文章是加密的，请输入密码查看。
-    
-    </summary>
-    
-    
-      <category term="生活" scheme="https://zengwangfa.top/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="生活" scheme="https://zengwangfa.top/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="LCD" scheme="https://zengwangfa.top/tags/LCD/"/>
     
   </entry>
   
@@ -110,9 +89,9 @@
       <category term="S3C2440" scheme="https://zengwangfa.top/categories/S3C2440/"/>
     
     
-      <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
-    
       <category term="Nand" scheme="https://zengwangfa.top/tags/Nand/"/>
+    
+      <category term="ARM9" scheme="https://zengwangfa.top/tags/ARM9/"/>
     
   </entry>
   
@@ -129,7 +108,7 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;https://ina-blog.oss-cn-shanghai.aliyuncs.com/web_logo.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;img src=&quot;https://ina-blog.oss-cn-shanghai.aliyuncs.com/web_logo.png&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;学习类&quot;&gt;&lt;a href=&quot;#学习类&quot; class=&quot;headerlink&quot;
         
       
@@ -181,7 +160,7 @@
     
     <summary type="html">
     
-      这篇文章是加密的，请输入密码查看。
+      Here&#39;s something encrypted, password is required to continue reading.
     
     </summary>
     
@@ -234,7 +213,7 @@
         
         
           &lt;h2 id=&quot;1-参考资源&quot;&gt;&lt;a href=&quot;#1-参考资源&quot; class=&quot;headerlink&quot; title=&quot;1.参考资源&quot;&gt;&lt;/a&gt;1.参考资源&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/hexojs/hexo&quot;
+&lt;li&gt;&lt;a href=&quot;https://github.com/hexojs/hexo&quot;&gt;Github
         
       
     
@@ -289,7 +268,7 @@
       
         
         
-          &lt;p&gt;&lt;a href=&quot;https://github.com/jacksonliam/mjpg-streamer&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;mjpg-streamer
+          &lt;p&gt;&lt;a href=&quot;https://github.com/jacksonliam/mjpg-streamer&quot;&gt;mjpg-streamer
         
       
     
@@ -316,7 +295,7 @@
       
         
         
-          &lt;p&gt;&lt;a href=&quot;https://github.com/jacksonliam/mjpg-streamer&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;mjpg-streamer
+          &lt;p&gt;&lt;a href=&quot;https://github.com/jacksonliam/mjpg-streamer&quot;&gt;mjpg-streamer
         
       
     

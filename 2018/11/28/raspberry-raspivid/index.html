@@ -26,7 +26,9 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="淹死的鱼" type="application/atom+xml">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="淹死的鱼" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -485,7 +487,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
 				
@@ -501,7 +503,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a href="https://github.com/jacksonliam/mjpg-streamer" target="_blank" rel="noopener">mjpg-streamer Github</a></p>
+                <p><a target="_blank" rel="noopener" href="https://github.com/jacksonliam/mjpg-streamer">mjpg-streamer Github</a></p>
 <p><kbd><strong>用到的工具材料</strong>：</kbd></p>
 <ul>
 <li><input checked="" disabled="" type="checkbox"> 树莓派3B+</li>
@@ -523,34 +525,23 @@
 
 <h1 id="总体流程"><a href="#总体流程" class="headerlink" title="总体流程"></a>总体流程</h1><p>1.树莓派硬件连接与软件及驱动安装<br>2.上位机PC端的接收视频流<br>3.延迟效果测试</p>
 <h2 id="1-硬件连接与软件及驱动配置"><a href="#1-硬件连接与软件及驱动配置" class="headerlink" title="1.硬件连接与软件及驱动配置"></a>1.硬件连接与软件及驱动配置</h2><h3 id="1）检测是否存在USB摄像头设备"><a href="#1）检测是否存在USB摄像头设备" class="headerlink" title="1）检测是否存在USB摄像头设备"></a>1）检测是否存在USB摄像头设备</h3><p>输入以下指令：</p>
-<pre><code>pi@raspberrypi:~ $ lsusb</code></pre><ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ lsusb</span><br></pre></td></tr></tbody></table></figure>
+<ul>
 <li>未插入USB摄像头</li>
 </ul>
-<pre><code>
-pi@raspberrypi:~ $ lsusb 
-Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. SMSC9512/9514 Fast Ethernet Adapter
-Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-</code></pre><ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pi@raspberrypi:~ $ lsusb </span><br><span class="line">Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. SMSC9512/9514 Fast Ethernet Adapter</span><br><span class="line">Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
 <li>插入USB摄像头</li>
 </ul>
-<pre><code>pi@raspberrypi:~ $ lsusb
-Bus 001 Device 004: ID 05a3:9230 ARC International
-Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. SMSC9512/9514 Fast Ethernet Adapter
-Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</code></pre><pre><code>pi@raspberrypi:~ $ v4l2-ctl --list-formats</code></pre><pre><code>pi@raspberrypi:~ $ v4l2-ctl --list-formats
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ lsusb</span><br><span class="line">Bus 001 Device 004: ID 05a3:9230 ARC International</span><br><span class="line">Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. SMSC9512/9514 Fast Ethernet Adapter</span><br><span class="line">Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></tbody></table></figure>
 
-ioctl: VIDIOC_ENUM_FMT
-        Index       : 0
-        Type        : Video Capture
-        Pixel Format: 'MJPG' (compressed)
-        Name        : Motion-JPEG
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ v4l2-ctl --list-formats</span><br></pre></td></tr></tbody></table></figure>
 
-        Index       : 1
-        Type        : Video Capture
-        Pixel Format: 'YUYV'
-        Name        : YUYV 4:2:2
-</code></pre><table>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ v4l2-ctl --list-formats</span><br><span class="line"></span><br><span class="line">ioctl: VIDIOC_ENUM_FMT</span><br><span class="line">        Index       : 0</span><br><span class="line">        Type        : Video Capture</span><br><span class="line">        Pixel Format: 'MJPG' (compressed)</span><br><span class="line">        Name        : Motion-JPEG</span><br><span class="line"></span><br><span class="line">        Index       : 1</span><br><span class="line">        Type        : Video Capture</span><br><span class="line">        Pixel Format: 'YUYV'</span><br><span class="line">        Name        : YUYV 4:2:2</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+<table>
     <tbody><tr>
         <td><center><img src="https://img-blog.csdnimg.cn/20181202170523751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70">图1  还未插入USB摄像头 </center></td>
         <td><center><img src="https://img-blog.csdnimg.cn/20181202170531278.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70">图2 插入USB摄像头</center></td>
@@ -560,88 +551,51 @@ ioctl: VIDIOC_ENUM_FMT
 <h3 id="2）安装-MJPG-Streamer-from-github"><a href="#2）安装-MJPG-Streamer-from-github" class="headerlink" title="2）安装 MJPG-Streamer from github"></a>2）安装 MJPG-Streamer from github</h3><blockquote>
 <p>按照以下命令安装MJPG-Streamer及其相关配置 每一行为一个命令</p>
 </blockquote>
-<pre><code>sudo apt-get install cmake libjpeg8-dev
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install cmake libjpeg8-dev</span><br><span class="line"></span><br><span class="line">wget https://github.com/jacksonliam/mjpg-streamer/archive/master.zip</span><br><span class="line"></span><br><span class="line">unzip master.zip</span><br><span class="line"></span><br><span class="line">cd mjp*g-*</span><br><span class="line"></span><br><span class="line">cd mjpg-*</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line">cd $home</span><br></pre></td></tr></tbody></table></figure>
 
-wget https://github.com/jacksonliam/mjpg-streamer/archive/master.zip
-
-unzip master.zip
-
-cd mjp*g-*
-
-cd mjpg-*
-
-make
-
-sudo make install
-
-cd $home</code></pre><p>流程如下<br><img src="https://img-blog.csdnimg.cn/2018120219295880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>流程如下<br><img src="https://img-blog.csdnimg.cn/2018120219295880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70"></p>
 <h3 id="3）启动MJPG-Streamer"><a href="#3）启动MJPG-Streamer" class="headerlink" title="3）启动MJPG-Streamer"></a>3）启动MJPG-Streamer</h3><blockquote>
 <p>启动如下指令：<br>TCP端口8085被指定为输出端口，以确保没有对其他任何东西的干扰。</p>
 </blockquote>
-<pre><code>/usr/local/bin/mjpg_streamer -i "/usr/local/lib/mjpg-streamer/input_uvc.so -n -f 10 -r 1280x720" -o "/usr/local/lib/mjpg-streamer/output_http.so -p 8085 -w /usr/local/share/mjpg-streamer/www"</code></pre><p><img src="https://img-blog.csdnimg.cn/20181202185954705.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt="树莓派推流成功"></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/bin/mjpg_streamer -i "/usr/local/lib/mjpg-streamer/input_uvc.so -n -f 10 -r 1280x720" -o "/usr/local/lib/mjpg-streamer/output_http.so -p 8085 -w /usr/local/share/mjpg-streamer/www"</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20181202185954705.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt="树莓派推流成功"></p>
 <p><strong>如上图所示，推流已经完成，分辨率为720P(1280X720)，端口号为8085，到此树莓派的任务已经完成</strong></p>
-<pre><code>pi@raspberrypi:~ $ /usr/local/bin/mjpg_streamer -i "/usr/local/lib/mjpg-streamer/input_uvc.so -n -f 10 -r 1280x720" -o "/usr/local/lib/mjpg-streamer/output_http.so -p 8085 -w /usr/local/share/mjpg-streamer/www"
-MJPG Streamer Version.: 2.0
- i: Using V4L2 device.: /dev/video0
- i: Desired Resolution: 1280 x 720
- i: Frames Per Second.: 10
- i: Format............: JPEG
- i: TV-Norm...........: DEFAULT
- i: FPS coerced ......: from 10 to 60
- o: www-folder-path......: /usr/local/share/mjpg-streamer/www/
- o: HTTP TCP port........: 8085
- o: HTTP Listen Address..: (null)
- o: username:password....: disabled
- o: commands.............: enabled
-</code></pre><h3 id="4）开启指定-多个摄像头"><a href="#4）开启指定-多个摄像头" class="headerlink" title="4）开启指定/多个摄像头"></a>4）开启指定/多个摄像头</h3><ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ /usr/local/bin/mjpg_streamer -i "/usr/local/lib/mjpg-streamer/input_uvc.so -n -f 10 -r 1280x720" -o "/usr/local/lib/mjpg-streamer/output_http.so -p 8085 -w /usr/local/share/mjpg-streamer/www"</span><br><span class="line">MJPG Streamer Version.: 2.0</span><br><span class="line"> i: Using V4L2 device.: /dev/video0</span><br><span class="line"> i: Desired Resolution: 1280 x 720</span><br><span class="line"> i: Frames Per Second.: 10</span><br><span class="line"> i: Format............: JPEG</span><br><span class="line"> i: TV-Norm...........: DEFAULT</span><br><span class="line"> i: FPS coerced ......: from 10 to 60</span><br><span class="line"> o: www-folder-path......: /usr/local/share/mjpg-streamer/www/</span><br><span class="line"> o: HTTP TCP port........: 8085</span><br><span class="line"> o: HTTP Listen Address..: (null)</span><br><span class="line"> o: username:password....: disabled</span><br><span class="line"> o: commands.............: enabled</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="4）开启指定-多个摄像头"><a href="#4）开启指定-多个摄像头" class="headerlink" title="4）开启指定/多个摄像头"></a>4）开启指定/多个摄像头</h3><ul>
 <li>USB设备存在两个摄像头</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/20190507154817290.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/20190507154817290.png"></p>
 <ul>
 <li>如果你有多个摄像头，也可以开启多个摄像头</li>
 <li>-d /dev/video1    参数标明需要开启的摄像头</li>
 </ul>
-<pre><code>/usr/local/bin/mjpg_streamer -i "/usr/local/lib/mjpg-streamer/input_uvc.so -d /dev/video1 -n -f 10 -r 1280x720" -o "/usr/local/lib/mjpg-streamer/output_http.so -p 8085 -w /usr/local/share/mjpg-streamer/www"</code></pre><h2 id="2-上位机PC端的接收视频流"><a href="#2-上位机PC端的接收视频流" class="headerlink" title="2.上位机PC端的接收视频流"></a>2.上位机PC端的接收视频流</h2><blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/bin/mjpg_streamer -i "/usr/local/lib/mjpg-streamer/input_uvc.so -d /dev/video1 -n -f 10 -r 1280x720" -o "/usr/local/lib/mjpg-streamer/output_http.so -p 8085 -w /usr/local/share/mjpg-streamer/www"</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-上位机PC端的接收视频流"><a href="#2-上位机PC端的接收视频流" class="headerlink" title="2.上位机PC端的接收视频流"></a>2.上位机PC端的接收视频流</h2><blockquote>
 <p>采用web网页接收视频流</p>
 </blockquote>
 <p>打开浏览器输入：</p>
-<pre><code>http://树莓派ip地址:开启的端口号</code></pre><pre><code>// A case in point 例如：
-http://192.168.2.150:8085</code></pre><blockquote>
-<p>输入 <a href="http://192.168.2.150:8085" target="_blank" rel="noopener">http://192.168.2.150:8085</a>   打开后如下图：为MJPG Streamer 首页<br><img src="https://img-blog.csdnimg.cn/20181202190911467.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt=""></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://树莓派ip地址:开启的端口号</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// A case in point 例如：</span><br><span class="line">http://192.168.2.150:8085</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>输入 <a target="_blank" rel="noopener" href="http://192.168.2.150:8085/">http://192.168.2.150:8085</a>   打开后如下图：为MJPG Streamer 首页<br><img src="https://img-blog.csdnimg.cn/20181202190911467.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70"></p>
 </blockquote>
 <ul>
 <li>查看视频点击Stream</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/20181202190927946.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/20181202190927946.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70"></p>
 <p>看到网页中有树莓派USB摄像头拍摄的画面，证明视频推流成功。</p>
 <h2 id="3-双摄延迟效果测试"><a href="#3-双摄延迟效果测试" class="headerlink" title="3.双摄延迟效果测试"></a>3.双摄延迟效果测试</h2><blockquote>
 <p>我们打开一个在线秒表，让其开始计时，而后我们用树莓派CSI摄像头及USB摄像头去拍摄电脑屏幕，然后截屏，计算拍摄的时间与秒表实际时间的差值，可以粗略测得延时的结果</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/20181202191338911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/20181202191338911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70"></p>
 <p>“如上图所示”    在线秒表为1.18.697<br>USB摄像头（Web MJPG-Streamer）推流视频中的在线秒表为1.18.567<br>CSI摄像头（MPlayer  视频播放器）推流视频中的在线秒表为1.18.525<br>其差值△t1=0.130s=130ms                  △t1=0.172s=172ms</p>
 <p>之后我通过多次测试多种组合得到如下图数据（仅做参考）：</p>
-<p><img src="https://img-blog.csdnimg.cn/20181202192130874.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/20181202192130874.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDkyOTMy,size_16,color_FFFFFF,t_70"></p>
 <p>总结：</p>
-<pre><code>   分辨率都为 720P  延迟大致为100-200ms之间[带光纤延迟增加并不明显]
-   分辨率都为 1080P 延迟为200-300ms</code></pre><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">分辨率都为 720P  延迟大致为100-200ms之间[带光纤延迟增加并不明显]</span><br><span class="line">分辨率都为 1080P 延迟为200-300ms</span><br></pre></td></tr></tbody></table></figure>
             </div>
             <hr/>
 
@@ -1107,7 +1061,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">12.4k</span>&nbsp;字
+                class="white-color">12k</span>&nbsp;字
             
             
             

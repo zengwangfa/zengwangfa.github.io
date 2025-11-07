@@ -26,7 +26,9 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="淹死的鱼" type="application/atom+xml">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="淹死的鱼" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -478,7 +480,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    602
+                    551
                 </div>
                 
 
@@ -502,7 +504,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="1-注册七牛云账号"><a href="#1-注册七牛云账号" class="headerlink" title="1.注册七牛云账号"></a>1.注册七牛云账号</h2><ul>
-<li><a href="https://portal.qiniu.com/signup" target="_blank" rel="noopener">点击注册七牛云</a></li>
+<li><a target="_blank" rel="noopener" href="https://portal.qiniu.com/signup">点击注册七牛云</a></li>
 </ul>
 <p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/qiniu_signup.png" alt="注册七牛云"></p>
 <blockquote>
@@ -515,69 +517,54 @@
 <h3 id="2-4-获取图片外链"><a href="#2-4-获取图片外链" class="headerlink" title="2.4 获取图片外链"></a>2.4 获取图片外链</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/qiniu_copy_url.png" alt="获取图片外链"></p>
 <h2 id="3-使用PicGo进行管理与上传"><a href="#3-使用PicGo进行管理与上传" class="headerlink" title="3.使用PicGo进行管理与上传"></a>3.使用PicGo进行管理与上传</h2><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/picgo.png" alt="PicGo"></p>
 <ul>
-<li><a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener">点击下载PicGo</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">点击下载PicGo</a></li>
 </ul>
 <h3 id="3-1-设置七牛图床"><a href="#3-1-设置七牛图床" class="headerlink" title="3.1 设置七牛图床"></a>3.1 设置七牛图床</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/picgo_qiniu_setting.png" alt="设置七牛图床"></p>
 <ul>
 <li>1.获得AK与SK</li>
 </ul>
-<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/qiniu_ak_sk.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/qiniu_ak_sk.png"></p>
 <ul>
 <li>2.存储空间名要与之前创建的空间名移植</li>
 <li>3.获得访问网址</li>
 </ul>
 <p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/qiniu_copy_web.png" alt="访问网址"></p>
 <h3 id="3-2-复制外链"><a href="#3-2-复制外链" class="headerlink" title="3.2 复制外链"></a>3.2 复制外链</h3><p>上传完的图片就会在相册中，并且预览、复制链接</p>
-<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/picgo_photos.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/picgo_photos.png"></p>
 <h3 id="3-3-自定义链接格式"><a href="#3-3-自定义链接格式" class="headerlink" title="3.3 自定义链接格式"></a>3.3 自定义链接格式</h3><ul>
 <li><code>Custom</code>模式可以自定义链接格式</li>
 </ul>
-<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/picgo_set_url.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/picgo_set_url.png"></p>
 <p>-用占位符<code>$url</code>来表示ul的位置</p>
 <ul>
 <li>用占位符<code>$fileName</code>来表示文件名的位置</li>
 </ul>
 <p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/picgo_set_by_custom.png" alt="自定义链接格式"></p>
 <p>点击复制，就会按照自定义的格式复制链接，eg：</p>
-<pre><code>![在这里描述图片](https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon1.png)</code></pre><h3 id="3-4-PicGo插件"><a href="#3-4-PicGo插件" class="headerlink" title="3.4 PicGo插件"></a>3.4 PicGo插件</h3><ul>
-<li><a href="https://github.com/PicGo/Awesome-PicGo" target="_blank" rel="noopener">点击进入PicGo插件合集页面</a></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![在这里描述图片](https://ian-study.oss-cn-shanghai.aliyuncs.com/lcdcon1.png)</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="3-4-PicGo插件"><a href="#3-4-PicGo插件" class="headerlink" title="3.4 PicGo插件"></a>3.4 PicGo插件</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/PicGo/Awesome-PicGo">点击进入PicGo插件合集页面</a></li>
 </ul>
 <hr>
 <ul>
-<li><a href="https://github.com/PicGo/picgo-plugin-autocopy" target="_blank" rel="noopener">PicGo -plugin-autocopy</a>:用于上传后将url自动复制到剪贴板的PicGo插件。【CLI】</li>
-<li><a href="https://github.com/zWingz/picgo-plugin-github-plus" target="_blank" rel="noopener">PicGo -plugin-github-plus</a>: PicGo上传github &amp; gitee同步功能。【GUI】</li>
-<li><a href="https://github.com/picgo/picgo-plugin-pico-migrater" target="_blank" rel="noopener">PicGo -plugin- pico -migrater</a> :一个PicGo插件，用于将markdown文件中的图片从一个picBed迁移到另一个picBed。【CLI&amp;GUI】</li>
-<li><a href="https://github.com/yuki-xin/picgo-plugin-web-uploader" target="_blank" rel="noopener">PicGo -plugin-web-uploader</a>: PicGo上传自定义web api。【GUI】</li>
-<li><a href="https://github.com/chengww5217/picgo-plugin-qingstor-uploader" target="_blank" rel="noopener">PicGo -plugin-qingstor-uploader</a>: PicGo插件与添加的青石图片托管。【GUI】</li>
-<li><a href="https://github.com/upupming/picgo-plugin-vscode-migrator" target="_blank" rel="noopener">PicGo -plugin-vscode-migrator</a>: PicGo从<a href="https://github.com/Spades-S/vs-picgo/" target="_blank" rel="noopener">‘ vs-picgo ‘</a>导入图像的插件【GUI】</li>
-<li><a href="https://github.com/gclove/picgo-plugin-super-prefix#readme" target="_blank" rel="noopener">PicGo -plugin-super-prefix</a>: PicGo自定义图像文件名和前缀的插件【CLI&amp;GUI】</li>
-<li><a href="https://github.com/xlzy520/picgo-plugin-smms-user.git" target="_blank" rel="noopener">PicGo -plugin-smms-user</a>:针对SM注册用户的PicGo插件。MS【GUI】</li>
-<li><a href="https://github.com/bugwz/picgo-plugin-gitlab" target="_blank" rel="noopener">PicGo -plugin- GitLab</a>: PicGo GitLab上传器【CLI&amp;GUI】</li>
-<li><a href="https://www.npmjs.com/package/picgo-plugin-bilibili" target="_blank" rel="noopener">PicGo -plugin-bilibili</a>: PicGo上传bilibli【CLI&amp;GUI】- <a href="https://github.com/zhanghuid/picgo-plugin-gitee" target="_blank" rel="noopener">PicGo -plugin-gitee</a>: PicGo gitee上传器【CLI&amp;GUI】</li>
-<li><a href="https://github.com/lizhuangs/picgo-plugin-gitee-uploader#readme" target="_blank" rel="noopener">PicGo -plugin-gitee-uploader</a></li>
-<li><a href="https://github.com/jiajiajia343434/picgo-plugin-nextcloud-uploader" target="_blank" rel="noopener">PicGo -plugin- NextCloud - Uploader</a>: PicGo - Uploader for NextCloud【CLI&amp;GUI】</li>
-<li><a href="https://github.com/Dec-F/picgo-plugin-watermark" target="_blank" rel="noopener">PicGo -plugin-watermark</a>: PicGo的水印插件【CLI&amp;GUI】【v2.2.0+】</li>
-<li><a href="https://github.com/PicGo/picgo-plugin-quick-capture" target="_blank" rel="noopener">PicGo -plugin-quick-capture</a>: PicGo【CLI&amp;GUI】【v2.2.0+】快速截图及上传插件</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/PicGo/picgo-plugin-autocopy">PicGo -plugin-autocopy</a>:用于上传后将url自动复制到剪贴板的PicGo插件。【CLI】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zWingz/picgo-plugin-github-plus">PicGo -plugin-github-plus</a>: PicGo上传github &amp; gitee同步功能。【GUI】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/picgo/picgo-plugin-pico-migrater">PicGo -plugin- pico -migrater</a> :一个PicGo插件，用于将markdown文件中的图片从一个picBed迁移到另一个picBed。【CLI&amp;GUI】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/yuki-xin/picgo-plugin-web-uploader">PicGo -plugin-web-uploader</a>: PicGo上传自定义web api。【GUI】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chengww5217/picgo-plugin-qingstor-uploader">PicGo -plugin-qingstor-uploader</a>: PicGo插件与添加的青石图片托管。【GUI】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/upupming/picgo-plugin-vscode-migrator">PicGo -plugin-vscode-migrator</a>: PicGo从<a target="_blank" rel="noopener" href="https://github.com/Spades-S/vs-picgo/">‘ vs-picgo ‘</a>导入图像的插件【GUI】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gclove/picgo-plugin-super-prefix#readme">PicGo -plugin-super-prefix</a>: PicGo自定义图像文件名和前缀的插件【CLI&amp;GUI】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xlzy520/picgo-plugin-smms-user.git">PicGo -plugin-smms-user</a>:针对SM注册用户的PicGo插件。MS【GUI】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bugwz/picgo-plugin-gitlab">PicGo -plugin- GitLab</a>: PicGo GitLab上传器【CLI&amp;GUI】</li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/picgo-plugin-bilibili">PicGo -plugin-bilibili</a>: PicGo上传bilibli【CLI&amp;GUI】- <a target="_blank" rel="noopener" href="https://github.com/zhanghuid/picgo-plugin-gitee">PicGo -plugin-gitee</a>: PicGo gitee上传器【CLI&amp;GUI】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lizhuangs/picgo-plugin-gitee-uploader#readme">PicGo -plugin-gitee-uploader</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jiajiajia343434/picgo-plugin-nextcloud-uploader">PicGo -plugin- NextCloud - Uploader</a>: PicGo - Uploader for NextCloud【CLI&amp;GUI】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Dec-F/picgo-plugin-watermark">PicGo -plugin-watermark</a>: PicGo的水印插件【CLI&amp;GUI】【v2.2.0+】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/PicGo/picgo-plugin-quick-capture">PicGo -plugin-quick-capture</a>: PicGo【CLI&amp;GUI】【v2.2.0+】快速截图及上传插件</li>
 </ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 
@@ -1042,7 +1029,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">12.4k</span>&nbsp;字
+                class="white-color">12k</span>&nbsp;字
             
             
             

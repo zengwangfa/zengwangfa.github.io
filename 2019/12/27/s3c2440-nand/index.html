@@ -26,7 +26,9 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="淹死的鱼" type="application/atom+xml">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="淹死的鱼" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -439,12 +441,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ARM9/">
-                                <span class="chip bg-color">ARM9</span>
-                            </a>
-                        
                             <a href="/tags/Nand/">
                                 <span class="chip bg-color">Nand</span>
+                            </a>
+                        
+                            <a href="/tags/ARM9/">
+                                <span class="chip bg-color">ARM9</span>
                             </a>
                         
                     </div>
@@ -482,7 +484,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    2.9k
                 </div>
                 
 
@@ -505,44 +507,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-读芯片ID"><a href="#1-读芯片ID" class="headerlink" title="1.读芯片ID"></a>1.读芯片ID</h2><h3 id="1-1-读芯片ID时序"><a href="#1-1-读芯片ID时序" class="headerlink" title="1.1 读芯片ID时序"></a>1.1 读芯片ID时序</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_timing.png" alt=""></p>
+                <h2 id="1-读芯片ID"><a href="#1-读芯片ID" class="headerlink" title="1.读芯片ID"></a>1.读芯片ID</h2><h3 id="1-1-读芯片ID时序"><a href="#1-1-读芯片ID时序" class="headerlink" title="1.1 读芯片ID时序"></a>1.1 读芯片ID时序</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_timing.png"></p>
 <p> 简化为4个步骤：</p>
 <ul>
-<li><p>1.使能片选</p>
-</li>
-<li><p>2.写命令0x90</p>
-</li>
-<li><p>3.写地址0x00</p>
-</li>
-<li><p>4.读ID信息</p>
-<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 识别NAND FLASH */</span>
-<span class="token keyword">void</span> <span class="token function">scan_nand_flash</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
- <span class="token keyword">int</span> i<span class="token punctuation">;</span>
- <span class="token comment" spellcheck="true">//保存读取ID信息的数组</span>
- <span class="token keyword">unsigned</span> <span class="token keyword">char</span> id_info<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-
- <span class="token function">nand_enable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//使能CS</span>
- <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x90</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">nand_write_addr</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
- <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-     id_info<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">nand_read_data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">}</span>
- <span class="token function">nand_disable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//禁止CS</span>
-
- <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Maker  Code: 0x%x\r\n"</span><span class="token punctuation">,</span>id_info<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Device Code: 0x%x\r\n"</span><span class="token punctuation">,</span>id_info<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"3rd   cycle: 0x%x\n\r"</span><span class="token punctuation">,</span>id_info<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Page   size: %d KB\n\r"</span><span class="token punctuation">,</span><span class="token number">1</span>  <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span>id_info<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">&amp;</span> <span class="token number">0x03</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//页大小与id_info[3]最低2位有关</span>
- <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Block  size: %d KB\n\r"</span><span class="token punctuation">,</span><span class="token number">64</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>id_info<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">>></span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0x03</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//块大小与id_info[3]第4、5位有关</span>
-
- <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"5th   cycle: 0x%x\n\r"</span><span class="token punctuation">,</span>id_info<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="1-2-由ID数据获得芯片参数"><a href="#1-2-由ID数据获得芯片参数" class="headerlink" title="1.2 由ID数据获得芯片参数"></a>1.2 由ID数据获得芯片参数</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_scan_test.png" alt=""></p>
-</li>
+<li>1.使能片选</li>
+<li>2.写命令0x90</li>
+<li>3.写地址0x00</li>
+<li>4.读ID信息</li>
 </ul>
-<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_chip_params.png" alt=""></p>
-<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_scan_test2.png" alt=""></p>
+ <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 识别NAND FLASH */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">scan_nand_flash</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">{</span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	<span class="comment">//保存读取ID信息的数组</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> id_info[<span class="number">5</span>] = {<span class="number">0</span>};</span><br><span class="line"></span><br><span class="line">	nand_enable_cs();<span class="comment">//使能CS</span></span><br><span class="line">	nand_write_cmd(<span class="number">0x90</span>);</span><br><span class="line">	nand_write_addr(<span class="number">0x00</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">5</span>;i++){</span><br><span class="line">		id_info[i] = nand_read_data();</span><br><span class="line">	}</span><br><span class="line">	nand_disable_cs();<span class="comment">//禁止CS</span></span><br><span class="line">    </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Maker  Code: 0x%x\r\n"</span>,id_info[<span class="number">0</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Device Code: 0x%x\r\n"</span>,id_info[<span class="number">1</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"3rd   cycle: 0x%x\n\r"</span>,id_info[<span class="number">2</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Page   size: %d KB\n\r"</span>,<span class="number">1</span>  &lt;&lt; (id_info[<span class="number">3</span>] &amp; <span class="number">0x03</span>));<span class="comment">//页大小与id_info[3]最低2位有关</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Block  size: %d KB\n\r"</span>,<span class="number">64</span> &lt;&lt; ((id_info[<span class="number">3</span>] &gt;&gt; <span class="number">4</span>) &amp; <span class="number">0x03</span>));<span class="comment">//块大小与id_info[3]第4、5位有关</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"5th   cycle: 0x%x\n\r"</span>,id_info[<span class="number">4</span>]);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="1-2-由ID数据获得芯片参数"><a href="#1-2-由ID数据获得芯片参数" class="headerlink" title="1.2 由ID数据获得芯片参数"></a>1.2 由ID数据获得芯片参数</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_scan_test.png"></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_chip_params.png"></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_scan_test2.png"></p>
 <ul>
 <li>ID信息的第4字节为<code>0x95</code></li>
 <li>页大小与id_info[3]最低2位有关，可得<strong>页大小</strong>为：<code>2KB</code></li>
@@ -554,25 +530,25 @@
 <h2 id="2-读数据"><a href="#2-读数据" class="headerlink" title="2.读数据"></a>2.读数据</h2><blockquote>
 <p>目标：实现从NAND FLASH中启动，重定位所有数据至SDRAM，并实现读取芯片ID数据</p>
 </blockquote>
-<h3 id="2-1-NAND内部结构分析"><a href="#2-1-NAND内部结构分析" class="headerlink" title="2.1 NAND内部结构分析"></a>2.1 NAND内部结构分析</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_struct.png" alt=""></p>
+<h3 id="2-1-NAND内部结构分析"><a href="#2-1-NAND内部结构分析" class="headerlink" title="2.1 NAND内部结构分析"></a>2.1 NAND内部结构分析</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_struct.png"></p>
 <ul>
 <li>OOB：out of bank（在bank之外）<br>由上图可得：</li>
 <li>1Page = 2KB + 64B</li>
 <li>1Block = 64 * Pages = 128KB + 4KB</li>
 <li>1Device = 2048 * Blocks = 256MB + 8MB</li>
 </ul>
-<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_data_store.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_data_store.png"></p>
 <ul>
 <li>OOB区的作用：因为nand的缺点是会发生<code>“位反转”</code>，为了解决这个问题，nand中的OOB区，<strong>用于校验数据区的数据是否发生错误</strong>，当有错误时，可以恢复数据。（其本身不存储数据）</li>
 <li>因为OOB中并不存放数据，只是用于校验数据区是否发生错误，因此当CPU读取Nand Flash<strong>第2048</strong>个数据，该数据为 <code>Page1中的第0个byte</code></li>
 </ul>
-<h3 id="2-2-地址序列与时序"><a href="#2-2-地址序列与时序" class="headerlink" title="2.2 地址序列与时序"></a>2.2 地址序列与时序</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_addr.png" alt=""></p>
+<h3 id="2-2-地址序列与时序"><a href="#2-2-地址序列与时序" class="headerlink" title="2.2 地址序列与时序"></a>2.2 地址序列与时序</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_addr.png"></p>
 <ul>
 <li>由地址序列可以看出：发出地址信号共需5个周期，前2个周期发出列地址（Column Address），后3个周期发出行地址（Row Address）</li>
-<li>地址线序列有一些位是没有用到的，其目的也是以后兼容更大芯片的nand falsh<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_read_timing.png" alt=""></li>
+<li>地址线序列有一些位是没有用到的，其目的也是以后兼容更大芯片的nand falsh<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_read_timing.png"></li>
 </ul>
 <blockquote>
-<p>Nand Flash内部结构展开大致如下：<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_struct2.png" alt=""></p>
+<p>Nand Flash内部结构展开大致如下：<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_struct2.png"></p>
 </blockquote>
 <h3 id="2-3-读数据流程"><a href="#2-3-读数据流程" class="headerlink" title="2.3 读数据流程"></a>2.3 读数据流程</h3><ul>
 <li>1.发出片选信号</li>
@@ -594,69 +570,18 @@
 </ul>
 </li>
 </ul>
-<pre class=" language-c"><code class="language-c">    <span class="token keyword">int</span> col  <span class="token operator">=</span> addr <span class="token operator">%</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//列地址  addr &amp;(2048-1); </span>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> col  = addr % <span class="number">2048</span>;<span class="comment">//列地址  addr &amp;(2048-1); </span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> page = addr / <span class="number">2048</span>;<span class="comment">//行地址（相当于页地址）</span></span><br></pre></td></tr></tbody></table></figure>
 
-    <span class="token keyword">int</span> page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//行地址（相当于页地址）</span></code></pre>
-<h3 id="2-5-NAND等待就绪"><a href="#2-5-NAND等待就绪" class="headerlink" title="2.5 NAND等待就绪"></a>2.5 NAND等待就绪</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_nfcon.png" alt=""></p>
+
+<h3 id="2-5-NAND等待就绪"><a href="#2-5-NAND等待就绪" class="headerlink" title="2.5 NAND等待就绪"></a>2.5 NAND等待就绪</h3><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_nfcon.png"></p>
 <ul>
 <li>当NFSATA[0] = 0时，表示正忙</li>
-<li>当NFSATA[0] = 1时，表示就绪<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 等待NAND就绪 */</span>
-<span class="token keyword">void</span> <span class="token function">nand_wait_ready</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>NFSTAT <span class="token operator">&amp;</span> <span class="token number">0x01</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//当NFSATA[0] = 1时，表示就绪</span>
-<span class="token punctuation">}</span></code></pre>
-</li>
+<li>当NFSATA[0] = 1时，表示就绪</li>
 </ul>
-<h3 id="2-6-读取数据函数"><a href="#2-6-读取数据函数" class="headerlink" title="2.6 读取数据函数"></a>2.6 读取数据函数</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* NAND FLASH读取数据
- * param:读取的地址、存放的地址、读取的长度
- */</span>
-<span class="token keyword">void</span> <span class="token function">read_nand_data</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">,</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span>buf<span class="token punctuation">,</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 等待NAND就绪 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">nand_wait_ready</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">{</span><br><span class="line">	<span class="keyword">while</span>(!(NFSTAT &amp; <span class="number">0x01</span>));<span class="comment">//当NFSATA[0] = 1时，表示就绪</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-    <span class="token comment" spellcheck="true">/*page是定位到哪一个页，col变量定位的就是在这个
-     *页的偏移量（在这个页上的第几列0~2047）
-     */</span>
-    <span class="token keyword">int</span> col  <span class="token operator">=</span> addr <span class="token operator">%</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//列地址  addr &amp;(2048-1); </span>
+<h3 id="2-6-读取数据函数"><a href="#2-6-读取数据函数" class="headerlink" title="2.6 读取数据函数"></a>2.6 读取数据函数</h3><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* NAND FLASH读取数据</span></span><br><span class="line"><span class="comment"> * param:读取的地址、存放的地址、读取的长度</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">read_nand_data</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> addr,<span class="type">unsigned</span> <span class="type">char</span> *buf,<span class="type">unsigned</span> <span class="type">int</span> len)</span></span><br><span class="line">{</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*page是定位到哪一个页，col变量定位的就是在这个</span></span><br><span class="line"><span class="comment">	 *页的偏移量（在这个页上的第几列0~2047）</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="type">int</span> col  = addr % <span class="number">2048</span>;<span class="comment">//列地址  addr &amp;(2048-1); </span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 因为读取数据的时候是一次性读出一页，因此当给出</span></span><br><span class="line"><span class="comment">	 * 地址addr之后，每一页的数据大小是2K，因此我们可以</span></span><br><span class="line"><span class="comment">	 * 根据地址知道我们读取的数据是哪一个页</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="type">int</span> page = addr / <span class="number">2048</span>;<span class="comment">//行地址（相当于页地址）</span></span><br><span class="line"></span><br><span class="line">	nand_enable_cs();<span class="comment">//1.使能CS</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(i &lt; len){</span><br><span class="line">		nand_write_cmd(<span class="number">0x00</span>);       <span class="comment">//2.发出0x00命令</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">/* col addr */</span></span><br><span class="line">		nand_write_addr(col &amp; <span class="number">0xFF</span>);<span class="comment">//3.发出地址</span></span><br><span class="line">		nand_write_addr((col &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>);  </span><br><span class="line"></span><br><span class="line"> 		<span class="comment">/* row/page addr */</span></span><br><span class="line">	    nand_write_addr(page &amp; <span class="number">0xFF</span>);</span><br><span class="line">	    nand_write_addr((page &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xFF</span>);</span><br><span class="line">		nand_write_addr((page &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>);	</span><br><span class="line"></span><br><span class="line">		nand_write_cmd(<span class="number">0x30</span>);<span class="comment">//4.发出0x30命令</span></span><br><span class="line"></span><br><span class="line">        nand_wait_ready(); <span class="comment">//5.等待就绪</span></span><br><span class="line">        <span class="comment">/* for循环中有2个条件</span></span><br><span class="line"><span class="comment">         * 1.当读到页尾，但还是没有读完，说明需要读取下一页</span></span><br><span class="line"><span class="comment">         * 2.当已经读取指定字节数，则不再读取</span></span><br><span class="line"><span class="comment">         */</span>     </span><br><span class="line">        <span class="keyword">for</span>(; (col &lt; <span class="number">2048</span>) &amp;&amp; (i &lt; len); col++){<span class="comment">//6.读数据</span></span><br><span class="line">        	buf[i++] = nand_read_data_byte();</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(i == len){</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">        col = <span class="number">0</span>;</span><br><span class="line">        page++;<span class="comment">//指向下一页</span></span><br><span class="line">	}</span><br><span class="line">	nand_disable_cs(); <span class="comment">//7.禁止CS</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-    <span class="token comment" spellcheck="true">/* 因为读取数据的时候是一次性读出一页，因此当给出
-     * 地址addr之后，每一页的数据大小是2K，因此我们可以
-     * 根据地址知道我们读取的数据是哪一个页
-     */</span>
-    <span class="token keyword">int</span> page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//行地址（相当于页地址）</span>
-
-    <span class="token function">nand_enable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//1.使能CS</span>
-
-    <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> len<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//2.发出0x00命令</span>
-
-        <span class="token comment" spellcheck="true">/* col addr */</span>
-        <span class="token function">nand_write_addr</span><span class="token punctuation">(</span>col <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//3.发出地址</span>
-        <span class="token function">nand_write_addr</span><span class="token punctuation">(</span><span class="token punctuation">(</span>col <span class="token operator">>></span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
-
-         <span class="token comment" spellcheck="true">/* row/page addr */</span>
-        <span class="token function">nand_write_addr</span><span class="token punctuation">(</span>page <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">nand_write_addr</span><span class="token punctuation">(</span><span class="token punctuation">(</span>page <span class="token operator">>></span>  <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">nand_write_addr</span><span class="token punctuation">(</span><span class="token punctuation">(</span>page <span class="token operator">>></span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
-
-        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x30</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//4.发出0x30命令</span>
-
-        <span class="token function">nand_wait_ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//5.等待就绪</span>
-        <span class="token comment" spellcheck="true">/* for循环中有2个条件
-         * 1.当读到页尾，但还是没有读完，说明需要读取下一页
-         * 2.当已经读取指定字节数，则不再读取
-         */</span>     
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span> <span class="token punctuation">(</span>col <span class="token operator">&lt;</span> <span class="token number">2048</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span> col<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//6.读数据</span>
-            buf<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">nand_read_data_byte</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">==</span> len<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        page<span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//指向下一页</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">nand_disable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//7.禁止CS</span>
-<span class="token punctuation">}</span></code></pre>
 <h3 id="2-7-NAND重定位"><a href="#2-7-NAND重定位" class="headerlink" title="2.7 NAND重定位"></a>2.7 NAND重定位</h3><blockquote>
 <p>从Nand Flash启动，此时片内SRAM的地址对应的就是CPU的0地址，如果从Nand Flash启动，2440硬件会把nand Flash前4K的数据复制到片内SRAM,如果Nand Flash上的程序大于4K,那后续数据就会丢失，相当于只重定位了前4K的代码。</p>
 </blockquote>
@@ -664,112 +589,25 @@
 <ul>
 <li>1.前提：实现了NAND FLASH读取数据函数</li>
 <li>2.代码烧写到NAND FLASH,并从NAND中启动</li>
-<li>3.程序运行到重定位代码的位置判断一下，是从Nand Flash启动还是NOR  Flash启动（通过往0地址写数据，因为Nand是支持读写的，所以读出的结果和写的结果一样，而NOR Flash不能像内存一样读写，因此读写的内容是不一致的）</li>
-<li>4.如果从NOR Flash启动，直接使用简单的重定位代码就行，如果是Nand Flash启动，那就是用Nnad Flash的读函数进行代码的重定位。</li>
+<li>3.程序运行到重定位代码的位置判断一下，是从Nand Flash启动还是NOR&nbsp; Flash启动（通过往0地址写数据，因为Nand是支持读写的，所以读出的结果和写的结果一样，而NOR&nbsp;Flash不能像内存一样读写，因此读写的内容是不一致的）</li>
+<li>4.如果从NOR&nbsp;Flash启动，直接使用简单的重定位代码就行，如果是Nand Flash启动，那就是用Nnad&nbsp;Flash的读函数进行代码的重定位。</li>
 </ul>
 <hr>
 <blockquote>
 <p>首先判断从NorFlash or NandFlash中启动</p>
 </blockquote>
-<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 检查是否从NorFlash中启动
- * 方法：写0x12345678到0地址，在读取出来，如果得到0x12345678，表示0地址上的内容被修改，即为片内RAM，则为nand启动
- * 原因：原因：nor不能直接写入，写入需要发出一定格式的数据，才能写入
- * 返回0为nand启动，返回1为nor启动
-*/</span>
-<span class="token keyword">int</span> <span class="token function">isBootFromNorFlash</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> val <span class="token operator">=</span> <span class="token operator">*</span>p<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//暂存[0]上的数据</span>
-    <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0xdeadc0de</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//dead code任意值</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0xdeadc0de</span> <span class="token operator">==</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">/* 写成功，对应nand启动 */</span>
-        <span class="token operator">*</span>p <span class="token operator">=</span> val<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//恢复原来的值</span>
-        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 检查是否从NorFlash中启动</span></span><br><span class="line"><span class="comment"> * 方法：写0x12345678到0地址，在读取出来，如果得到0x12345678，表示0地址上的内容被修改，即为片内RAM，则为nand启动</span></span><br><span class="line"><span class="comment"> * 原因：原因：nor不能直接写入，写入需要发出一定格式的数据，才能写入</span></span><br><span class="line"><span class="comment"> * 返回0为nand启动，返回1为nor启动</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isBootFromNorFlash</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">{</span><br><span class="line">	<span class="keyword">volatile</span> <span class="type">unsigned</span> <span class="type">int</span> *p = (<span class="keyword">volatile</span> <span class="type">unsigned</span> <span class="type">int</span> *)<span class="number">0</span>;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> val = *p;<span class="comment">//暂存[0]上的数据</span></span><br><span class="line">	*p = <span class="number">0xdeadc0de</span>;<span class="comment">//dead code任意值</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="number">0xdeadc0de</span> == *p){</span><br><span class="line">		<span class="comment">/* 写成功，对应nand启动 */</span></span><br><span class="line">		*p = val;<span class="comment">//恢复原来的值</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">else</span>{</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
 <blockquote>
 <p>重定位代码</p>
 </blockquote>
-<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/*
- * 将除bss段的全部数据拷贝到sdram中
- * 传递形参，原地址src:_start  目标地址dest:__bss_start  长度len:__bss_start-_star
- */</span>
-<span class="token keyword">void</span> <span class="token function">copy_to_sdram</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/* 要从lds文件中获取__code_start、__bss_start
-     * 然后从0地址把数据复制到__code_start
-     */</span>
-    <span class="token keyword">extern</span> <span class="token keyword">int</span> __code_start<span class="token punctuation">,</span>__bss_start<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//声明外部变量</span>
-
-    <span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span>src  <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//flash中0地址 </span>
-    <span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span>dest <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>__code_start<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//目标地址：sdram中的0x30000000地址</span>
-    <span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span>end  <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>__bss_start<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//结束地址：bss的起始地址</span>
-
-    <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>__bss_start <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>__code_start<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取数据总长度</span>
-
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isBootFromNorFlash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//如果从Nor中启动</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>dest <span class="token operator">&lt;</span> end<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token operator">*</span>dest<span class="token operator">++</span> <span class="token operator">=</span> <span class="token operator">*</span>src<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//拷贝</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//从Nand中启动,需要先初始化nand，然后重定位代码</span>
-        <span class="token function">nand_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//从 src 复制到 des ,总共复制len字节，也就是重定位的代码</span>
-        <span class="token function">read_nand_data</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span><span class="token punctuation">)</span>src<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>dest<span class="token punctuation">,</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 将除bss段的全部数据拷贝到sdram中</span></span><br><span class="line"><span class="comment"> * 传递形参，原地址src:_start  目标地址dest:__bss_start  长度len:__bss_start-_star</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">copy_to_sdram</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">{</span><br><span class="line">	<span class="comment">/* 要从lds文件中获取__code_start、__bss_start</span></span><br><span class="line"><span class="comment">	 * 然后从0地址把数据复制到__code_start</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">extern</span> <span class="type">int</span> __code_start,__bss_start; <span class="comment">//声明外部变量</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">volatile</span> <span class="type">unsigned</span> <span class="type">int</span> *src  = (<span class="keyword">volatile</span> <span class="type">unsigned</span> <span class="type">int</span> *)<span class="number">0</span>; <span class="comment">//flash中0地址 </span></span><br><span class="line">	<span class="keyword">volatile</span> <span class="type">unsigned</span> <span class="type">int</span> *dest = (<span class="keyword">volatile</span> <span class="type">unsigned</span> <span class="type">int</span> *)&amp;__code_start; <span class="comment">//目标地址：sdram中的0x30000000地址</span></span><br><span class="line">	<span class="keyword">volatile</span> <span class="type">unsigned</span> <span class="type">int</span> *end  = (<span class="keyword">volatile</span> <span class="type">unsigned</span> <span class="type">int</span> *)&amp;__bss_start;  <span class="comment">//结束地址：bss的起始地址</span></span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> len = (<span class="type">int</span>)&amp;__bss_start - (<span class="type">int</span>)&amp;__code_start;<span class="comment">//获取数据总长度</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(isBootFromNorFlash()){<span class="comment">//如果从Nor中启动</span></span><br><span class="line">		<span class="keyword">while</span>(dest &lt; end){</span><br><span class="line">			*dest++ = *src++; <span class="comment">//拷贝</span></span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">else</span>{<span class="comment">//从Nand中启动,需要先初始化nand，然后重定位代码</span></span><br><span class="line">		nand_init();</span><br><span class="line">        <span class="comment">//从 src 复制到 des ,总共复制len字节，也就是重定位的代码</span></span><br><span class="line">		read_nand_data((<span class="type">unsigned</span> <span class="type">int</span>)src,(<span class="type">unsigned</span> <span class="type">char</span> *)dest,len);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="2-7-读数据测试"><a href="#2-7-读数据测试" class="headerlink" title="2.7 读数据测试"></a>2.7 读数据测试</h3><blockquote>
 <p>读取0地址后160bytes的数据，如果跟.bin文件前160字节数据相同，则读取成功，否则读取失败</p>
 </blockquote>
-<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 测试函数：读数nand上160bytes数据 
- */</span>
-<span class="token keyword">void</span> <span class="token function">read_nand_flash</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
-    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">,</span>hex_addr<span class="token punctuation">;</span>
-    <span class="token keyword">unsigned</span> <span class="token keyword">char</span> c<span class="token punctuation">,</span>str<span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">,</span>data<span class="token punctuation">[</span><span class="token number">160</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">/* 获得地址 */</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"*****Enter the address to read:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    addr <span class="token operator">=</span> <span class="token function">get_uint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">read_nand_data</span><span class="token punctuation">(</span>addr<span class="token punctuation">,</span>data<span class="token punctuation">,</span><span class="token number">160</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取到地址上的数据</span>
-    p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">volatile</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>data<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//p指向data,用于打印data数据</span>
-
-    hex_addr <span class="token operator">=</span> addr<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//起始地址</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Read Data:\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"            00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f\n\r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token comment" spellcheck="true">/* 长度固定为160 bytes */</span>    
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"0x%08x  "</span><span class="token punctuation">,</span>hex_addr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//每行打印16个16进制数</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">16</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            c <span class="token operator">=</span> <span class="token operator">*</span>p<span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//读取16个</span>
-            str<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> c<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//保存字符</span>
-            <span class="token comment" spellcheck="true">//先打印数值</span>
-            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%02x "</span><span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" | "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//后打印字符</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">16</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">0x20</span> <span class="token operator">||</span> str<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0x7e</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//不可视字符,打印‘.’</span>
-                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">else</span><span class="token punctuation">{</span>
-                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span>str<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        hex_addr<span class="token operator">+</span><span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//换行+16</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n\r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span></code></pre>
-<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_bin_data.png" alt=""></p>
-<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_read_test2.png" alt=""><br>由上测试可知读取成功</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 测试函数：读数nand上160bytes数据 </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">read_nand_flash</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">{</span><br><span class="line">	<span class="type">int</span> i,j;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> addr,hex_addr;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> c,str[<span class="number">16</span>],data[<span class="number">160</span>];</span><br><span class="line">	<span class="keyword">volatile</span> <span class="type">unsigned</span> <span class="type">char</span> *p;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 获得地址 */</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"*****Enter the address to read:"</span>);</span><br><span class="line">	addr = get_uint();</span><br><span class="line"></span><br><span class="line">	read_nand_data(addr,data,<span class="number">160</span>);<span class="comment">//获取到地址上的数据</span></span><br><span class="line">	p = (<span class="keyword">volatile</span> <span class="type">unsigned</span> <span class="type">char</span> *)data;<span class="comment">//p指向data,用于打印data数据</span></span><br><span class="line"></span><br><span class="line">	hex_addr = addr;<span class="comment">//起始地址</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Read Data:\r\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"            00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f\n\r"</span>);</span><br><span class="line"> 	<span class="comment">/* 长度固定为160 bytes */</span>	</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++){</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"0x%08x  "</span>,hex_addr);</span><br><span class="line">		<span class="comment">//每行打印16个16进制数</span></span><br><span class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; <span class="number">16</span>; j++){</span><br><span class="line">			c = *p++;<span class="comment">//读取16个</span></span><br><span class="line">			str[j] = c;<span class="comment">//保存字符</span></span><br><span class="line">			<span class="comment">//先打印数值</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%02x "</span>,c);</span><br><span class="line">		}</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">" | "</span>);</span><br><span class="line">		<span class="comment">//后打印字符</span></span><br><span class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; <span class="number">16</span>; j++){</span><br><span class="line">			<span class="keyword">if</span>(str[j] &lt; <span class="number">0x20</span> || str[j] &gt; <span class="number">0x7e</span>){<span class="comment">//不可视字符,打印‘.’</span></span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"."</span>);</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">else</span>{</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%c"</span>,str[j]);</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		hex_addr+=<span class="number">16</span>;<span class="comment">//换行+16</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n\r"</span>);</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_bin_data.png"></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_read_test2.png"><br>由上测试可知读取成功</p>
 <h2 id="3-擦除"><a href="#3-擦除" class="headerlink" title="3.擦除"></a>3.擦除</h2><h3 id="3-1-擦除时序"><a href="#3-1-擦除时序" class="headerlink" title="3.1 擦除时序"></a>3.1 擦除时序</h3><ul>
 <li>1.发出片选信号</li>
 <li>2.发出0x60命令</li>
@@ -778,88 +616,17 @@
 <li>5.等待就绪（等待擦除完成）</li>
 <li>6.禁止片选</li>
 </ul>
-<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_erase_timing.png" alt=""></p>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_erase_timing.png"></p>
 <h3 id="3-2-地址和参数合法性"><a href="#3-2-地址和参数合法性" class="headerlink" title="3.2 地址和参数合法性"></a>3.2 地址和参数合法性</h3><ul>
 <li>由于按块来擦除（128KB），因此地址和参数都必须是128K的倍数</li>
-<li><pre class=" language-c"><code class="language-c">  <span class="token comment" spellcheck="true">/* 检查参数合法性 */</span>
-  <span class="token keyword">if</span><span class="token punctuation">(</span>addr <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">0x1FFFF</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//128K</span>
-      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Err addr! Please enter an integral multiple of 128K\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">if</span><span class="token punctuation">(</span>len <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">0x1FFFF</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//128K</span>
-      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Err len! Please enter an integral multiple of 128K\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span></code></pre>
-</li>
+<li></li>
 </ul>
-<h3 id="3-3-擦除函数"><a href="#3-3-擦除函数" class="headerlink" title="3.3 擦除函数"></a>3.3 擦除函数</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* NAND FLASH擦除数据
- * param:擦除的起始地址、擦除的长度(byte)
- * ret:失败-1，成功0
-*/</span>
-<span class="token keyword">int</span> <span class="token function">erase_nand_data</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">,</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//行地址</span>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 检查参数合法性 */</span></span><br><span class="line"><span class="keyword">if</span>(addr &amp; (<span class="number">0x1FFFF</span>)){ <span class="comment">//128K</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Err addr! Please enter an integral multiple of 128K\r\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">if</span>(len &amp; (<span class="number">0x1FFFF</span>)){ <span class="comment">//128K</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Err len! Please enter an integral multiple of 128K\r\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-    <span class="token comment" spellcheck="true">/* 检查参数合法性 */</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>addr <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">0x1FFFF</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//128K</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Err addr! Please enter an integral multiple of 128K\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>len <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">0x1FFFF</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//128K</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Err len! Please enter an integral multiple of 128K\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">/* 1.使能CS */</span>
-    <span class="token function">nand_enable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//行地址</span>
+<h3 id="3-3-擦除函数"><a href="#3-3-擦除函数" class="headerlink" title="3.3 擦除函数"></a>3.3 擦除函数</h3><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* NAND FLASH擦除数据</span></span><br><span class="line"><span class="comment"> * param:擦除的起始地址、擦除的长度(byte)</span></span><br><span class="line"><span class="comment"> * ret:失败-1，成功0</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">erase_nand_data</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> addr,<span class="type">unsigned</span> <span class="type">int</span> len)</span></span><br><span class="line">{</span><br><span class="line">	<span class="type">int</span> page = addr / <span class="number">2048</span>;<span class="comment">//行地址</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 检查参数合法性 */</span></span><br><span class="line">	<span class="keyword">if</span>(addr &amp; (<span class="number">0x1FFFF</span>)){ <span class="comment">//128K</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Err addr! Please enter an integral multiple of 128K\r\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span>(len &amp; (<span class="number">0x1FFFF</span>)){ <span class="comment">//128K</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Err len! Please enter an integral multiple of 128K\r\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="comment">/* 1.使能CS */</span></span><br><span class="line">	nand_enable_cs();</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	{</span><br><span class="line">		page = addr / <span class="number">2048</span>;<span class="comment">//行地址</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">/* 2.发出0x60命令 */</span></span><br><span class="line">		nand_write_cmd(<span class="number">0x60</span>); </span><br><span class="line">		<span class="comment">/* 3.发出地址row/page addr */</span></span><br><span class="line">		nand_page(page);      </span><br><span class="line">		<span class="comment">/* 4.发出0xD0命令 */</span></span><br><span class="line">		nand_write_cmd(<span class="number">0xD0</span>); </span><br><span class="line">		<span class="comment">/* 5.等待就绪(等待擦除完成) */</span></span><br><span class="line">		nand_wait_ready();    </span><br><span class="line"></span><br><span class="line">		len -= (<span class="number">128</span>*<span class="number">1024</span>);<span class="comment">//长度减去一个block</span></span><br><span class="line">		<span class="keyword">if</span>(<span class="number">0</span> == len){</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		}</span><br><span class="line">		addr += (<span class="number">128</span>*<span class="number">1024</span>);<span class="comment">//指向下一块</span></span><br><span class="line">	} </span><br><span class="line">	<span class="comment">/* 6.禁止CS */</span></span><br><span class="line">	nand_disable_cs();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-        <span class="token comment" spellcheck="true">/* 2.发出0x60命令 */</span>
-        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x60</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-        <span class="token comment" spellcheck="true">/* 3.发出地址row/page addr */</span>
-        <span class="token function">nand_page</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>      
-        <span class="token comment" spellcheck="true">/* 4.发出0xD0命令 */</span>
-        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0xD0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-        <span class="token comment" spellcheck="true">/* 5.等待就绪(等待擦除完成) */</span>
-        <span class="token function">nand_wait_ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
-
-        len <span class="token operator">-</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">128</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//长度减去一个block</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">==</span> len<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        addr <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">128</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//指向下一块</span>
-    <span class="token punctuation">}</span> 
-    <span class="token comment" spellcheck="true">/* 6.禁止CS */</span>
-    <span class="token function">nand_disable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<h3 id="3-4-擦除数据测试"><a href="#3-4-擦除数据测试" class="headerlink" title="3.4 擦除数据测试"></a>3.4 擦除数据测试</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 擦除测试函数：固定擦除一个1block = 128K
-*/</span>
-<span class="token keyword">void</span> <span class="token function">erase_nand_flash</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> addr<span class="token punctuation">;</span>
-    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> whichblock<span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* 获得第几个Block */</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Enter the address of sector to erase: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    addr <span class="token operator">=</span> <span class="token function">get_uint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    whichblock <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">128</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** block number : [ %d ]\r\n"</span><span class="token punctuation">,</span>whichblock<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">/* 提示擦除数据的范围 */</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** Erase range : 0x%08x - 0x%08x\n\r"</span><span class="token punctuation">,</span>addr<span class="token punctuation">,</span><span class="token punctuation">(</span>addr<span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">128</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** erase ...\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">erase_nand_data</span><span class="token punctuation">(</span>addr<span class="token punctuation">,</span><span class="token number">128</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//如果擦除成功</span>
-         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** Erase finished!\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token punctuation">}</span>
-     <span class="token keyword">else</span><span class="token punctuation">{</span>
-         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** Erase fail!\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_erase_test.png" alt=""></p>
+<h3 id="3-4-擦除数据测试"><a href="#3-4-擦除数据测试" class="headerlink" title="3.4 擦除数据测试"></a>3.4 擦除数据测试</h3><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 擦除测试函数：固定擦除一个1block = 128K</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">erase_nand_flash</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">{</span><br><span class="line">	<span class="type">int</span> addr;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> whichblock;</span><br><span class="line">	<span class="comment">/* 获得第几个Block */</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Enter the address of sector to erase: "</span>);</span><br><span class="line">	addr = get_uint();</span><br><span class="line"></span><br><span class="line">	whichblock = addr / (<span class="number">128</span>*<span class="number">1024</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"***** block number : [ %d ]\r\n"</span>,whichblock);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 提示擦除数据的范围 */</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"***** Erase range : 0x%08x - 0x%08x\n\r"</span>,addr,(addr+(<span class="number">128</span>*<span class="number">1024</span>)));</span><br><span class="line"> 	<span class="built_in">printf</span>(<span class="string">"***** erase ...\r\n"</span>);</span><br><span class="line"></span><br><span class="line"> 	<span class="keyword">if</span>(erase_nand_data(addr,<span class="number">128</span>*<span class="number">1024</span>) == <span class="number">0</span>){<span class="comment">//如果擦除成功</span></span><br><span class="line"> 		<span class="built_in">printf</span>(<span class="string">"***** Erase finished!\r\n"</span>);</span><br><span class="line"> 	}</span><br><span class="line"> 	<span class="keyword">else</span>{</span><br><span class="line"> 		<span class="built_in">printf</span>(<span class="string">"***** Erase fail!\r\n"</span>);</span><br><span class="line"> 	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_erase_test.png"></p>
 <h2 id="4-写数据"><a href="#4-写数据" class="headerlink" title="4.写数据"></a>4.写数据</h2><h3 id="4-1-写数据时序"><a href="#4-1-写数据时序" class="headerlink" title="4.1 写数据时序"></a>4.1 写数据时序</h3><ul>
 <li>1.发出片选信号</li>
 <li>2.发出0x80命令</li>
@@ -867,128 +634,28 @@
 <li>4.写入数据</li>
 <li>5.再发送0x10命令</li>
 <li>6.等待就绪（等待擦除完成）</li>
-<li>7.禁止片选<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_wriet_timing.png" alt=""></li>
+<li>7.禁止片选<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_wriet_timing.png"></li>
 </ul>
-<h3 id="4-2-写数据函数"><a href="#4-2-写数据函数" class="headerlink" title="4.2 写数据函数"></a>4.2 写数据函数</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* NAND FLASH写入数据
- * param:写入的地址、数据指针、写入的长度
- */</span>
-<span class="token keyword">void</span> <span class="token function">write_nand_data</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">,</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span>buf<span class="token punctuation">,</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> col <span class="token operator">=</span> addr <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">2048</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* 1.使能CS */</span>
-    <span class="token function">nand_enable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">/* 2.发出0x80命令 */</span>
-        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x80</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">/* 3.发出地址 */</span>
-        <span class="token function">nand_col</span><span class="token punctuation">(</span>col<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">nand_page</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">/* 4.写入数据*/</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span> <span class="token punctuation">(</span>col <span class="token operator">&lt;</span> <span class="token number">2048</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token function">nand_write_data_byte</span><span class="token punctuation">(</span>buf<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">/* 5.发出0x10命令 */</span>
-        <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">/* 6.等待就绪(等待写入完成) */</span>
-        <span class="token function">nand_wait_ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">==</span> len<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">else</span><span class="token punctuation">{</span>
-            col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-            page<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+<h3 id="4-2-写数据函数"><a href="#4-2-写数据函数" class="headerlink" title="4.2 写数据函数"></a>4.2 写数据函数</h3><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* NAND FLASH写入数据</span></span><br><span class="line"><span class="comment"> * param:写入的地址、数据指针、写入的长度</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">write_nand_data</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> addr,<span class="type">unsigned</span> <span class="type">char</span> *buf,<span class="type">unsigned</span> <span class="type">int</span> len)</span></span><br><span class="line">{</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> page = addr / <span class="number">2048</span>;</span><br><span class="line">	<span class="type">int</span> col = addr &amp; (<span class="number">2048</span> - <span class="number">1</span>);</span><br><span class="line">	<span class="comment">/* 1.使能CS */</span></span><br><span class="line">	nand_enable_cs();</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>){</span><br><span class="line">		<span class="comment">/* 2.发出0x80命令 */</span></span><br><span class="line">		nand_write_cmd(<span class="number">0x80</span>);</span><br><span class="line">		<span class="comment">/* 3.发出地址 */</span></span><br><span class="line">		nand_col(col);</span><br><span class="line">		nand_page(page);</span><br><span class="line">		<span class="comment">/* 4.写入数据*/</span></span><br><span class="line">		<span class="keyword">for</span>(; (col &lt; <span class="number">2048</span>) &amp;&amp; (i &lt; len); ){</span><br><span class="line">			nand_write_data_byte(buf[i++]);			</span><br><span class="line">		}</span><br><span class="line">		<span class="comment">/* 5.发出0x10命令 */</span></span><br><span class="line">		nand_write_cmd(<span class="number">0x10</span>);</span><br><span class="line">		<span class="comment">/* 6.等待就绪(等待写入完成) */</span></span><br><span class="line">		nand_wait_ready();</span><br><span class="line">		<span class="keyword">if</span>(i == len){</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">else</span>{</span><br><span class="line">			col = <span class="number">0</span>;</span><br><span class="line">			page++;</span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">	}</span><br><span class="line">	<span class="comment">/* 7.禁止CS */</span></span><br><span class="line">	nand_disable_cs();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-    <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">/* 7.禁止CS */</span>
-    <span class="token function">nand_disable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+
 <h3 id="4-3-写数据测试"><a href="#4-3-写数据测试" class="headerlink" title="4.3 写数据测试"></a>4.3 写数据测试</h3><blockquote>
 <p>此处注意：一般在烧写数据之前需要对数据进行擦除操作，除非原本的数据全f，否则都需要进行擦除，不然写入的数据会有问题。</p>
 </blockquote>
-<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">write_nand_flash</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">;</span>
-    <span class="token keyword">unsigned</span> <span class="token keyword">char</span> str<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> len<span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">/* 获得第几个Block */</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** Enter addr to write: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    addr <span class="token operator">=</span> <span class="token function">get_uint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** Enter the string to write: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">gets</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    len <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** write range : 0x%08x - 0x%08x\r\n"</span><span class="token punctuation">,</span>addr<span class="token punctuation">,</span><span class="token punctuation">(</span>addr <span class="token operator">+</span> len<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** writing ...\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">write_nand_data</span><span class="token punctuation">(</span>addr<span class="token punctuation">,</span>str<span class="token punctuation">,</span><span class="token function">strlen</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//strlen不包括结束符'\0'，因此需要+1</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"***** writing finished\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">write_nand_flash</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">{</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> addr;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> str[<span class="number">50</span>];</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> len;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 获得第几个Block */</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"***** Enter addr to write: "</span>);</span><br><span class="line">	addr = get_uint();</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"***** Enter the string to write: "</span>);</span><br><span class="line">	gets(str);</span><br><span class="line">	len = <span class="built_in">strlen</span>(str) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"***** write range : 0x%08x - 0x%08x\r\n"</span>,addr,(addr + len));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"***** writing ...\r\n"</span>);</span><br><span class="line"></span><br><span class="line">	write_nand_data(addr,str,<span class="built_in">strlen</span>(str)+<span class="number">1</span>);<span class="comment">//strlen不包括结束符'\0'，因此需要+1</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"***** writing finished\r\n"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
-<li>在<code>0x100000</code>地址写入“hello,world!”<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_write_test.png" alt=""></li>
-<li>读取数据<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_read_test3.png" alt=""></li>
+<li>在<code>0x100000</code>地址写入“hello,world!”<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_write_test.png"></li>
+<li>读取数据<br><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_read_test3.png"></li>
 </ul>
-<h2 id="5-判断是否为坏块"><a href="#5-判断是否为坏块" class="headerlink" title="5.判断是否为坏块"></a>5.判断是否为坏块</h2><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_data_store.png" alt=""></p>
+<h2 id="5-判断是否为坏块"><a href="#5-判断是否为坏块" class="headerlink" title="5.判断是否为坏块"></a>5.判断是否为坏块</h2><p><img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/nand_data_store.png"></p>
 <blockquote>
 <p>通过读取OOB区的第0个字节（即第<code>2048</code>个字节）来判断，如果不是0xFF，为坏块，否则不是</p>
 </blockquote>
-<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 判断是否为坏块
- * ret:返回1为坏块，返回0不是
- */</span>
-<span class="token keyword">int</span> <span class="token function">isNandBadBlock</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> addr<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> col <span class="token operator">=</span> <span class="token number">2048</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//读取OOB区第0个字节</span>
-    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> page <span class="token operator">=</span> addr <span class="token operator">/</span> <span class="token number">2048</span><span class="token punctuation">;</span>
-    <span class="token keyword">unsigned</span> <span class="token keyword">char</span> val <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* 1. 选中 */</span>
-    <span class="token function">nand_enable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* 2. 发出读命令00h */</span>
-    <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* 3. 发出地址(分5步发出) */</span>
-    <span class="token function">nand_col</span><span class="token punctuation">(</span>col<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">nand_page</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* 4. 发出读命令30h */</span>
-    <span class="token function">nand_write_cmd</span><span class="token punctuation">(</span><span class="token number">0x30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* 5. 判断状态,等待就绪 */</span>
-    <span class="token function">nand_wait_ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* 6. 读数据 */</span>
-    val <span class="token operator">=</span> <span class="token function">nand_read_data_byte</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* 7. 取消选中 */</span>    
-    <span class="token function">nand_disable_cs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">if</span><span class="token punctuation">(</span>val <span class="token operator">!=</span> <span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 坏块 */</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 判断是否为坏块</span></span><br><span class="line"><span class="comment"> * ret:返回1为坏块，返回0不是</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isNandBadBlock</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> addr)</span></span><br><span class="line">{</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> col = <span class="number">2048</span>;<span class="comment">//读取OOB区第0个字节</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> page = addr / <span class="number">2048</span>;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> val = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">/* 1. 选中 */</span></span><br><span class="line">	nand_enable_cs();</span><br><span class="line">	<span class="comment">/* 2. 发出读命令00h */</span></span><br><span class="line">	nand_write_cmd(<span class="number">0x00</span>);</span><br><span class="line">	<span class="comment">/* 3. 发出地址(分5步发出) */</span></span><br><span class="line">	nand_col(col);</span><br><span class="line">	nand_page(page);</span><br><span class="line">	<span class="comment">/* 4. 发出读命令30h */</span></span><br><span class="line">	nand_write_cmd(<span class="number">0x30</span>);</span><br><span class="line">	<span class="comment">/* 5. 判断状态,等待就绪 */</span></span><br><span class="line">	nand_wait_ready();</span><br><span class="line">	<span class="comment">/* 6. 读数据 */</span></span><br><span class="line">	val = nand_read_data_byte();</span><br><span class="line">	<span class="comment">/* 7. 取消选中 */</span>	</span><br><span class="line">	nand_disable_cs();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(val != <span class="number">0xFF</span>){</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>; <span class="comment">/* 坏块 */</span></span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">else</span>{</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="6-ECC"><a href="#6-ECC" class="headerlink" title="6.ECC"></a>6.ECC</h2><ul>
 <li>ECC（Error Checking and Correction），是一种用于Nand的差错检测和修正算法。</li>
 </ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 
@@ -1051,12 +718,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/ARM9/">
-                                    <span class="chip bg-color">ARM9</span>
-                                </a>
-                            
                                 <a href="/tags/Nand/">
                                     <span class="chip bg-color">Nand</span>
+                                </a>
+                            
+                                <a href="/tags/ARM9/">
+                                    <span class="chip bg-color">ARM9</span>
                                 </a>
                             
                         </div>
@@ -1226,19 +893,18 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/12/31/my-first-love/">
+                <a href="/2019/12/31/s3c2440-lcd/">
                     <div class="card-image">
                         
+                        <img src="https://ian-study.oss-cn-shanghai.aliyuncs.com/lcd_scan.gif" class="responsive-img" alt="LCD硬件原理及初始化">
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="...">
-                        
-                        <span class="card-title">...</span>
+                        <span class="card-title">LCD硬件原理及初始化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ...
+                            S3C2440 LCD硬件原理及初始化
                         
                     </div>
                     <div class="publish-info">
@@ -1249,8 +915,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/S3C2440/" class="post-category">
+                                    S3C2440
                                 </a>
                             
                             
@@ -1260,8 +926,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%94%9F%E6%B4%BB/">
-                        <span class="chip bg-color">生活</span>
+                    <a href="/tags/ARM9/">
+                        <span class="chip bg-color">ARM9</span>
+                    </a>
+                    
+                    <a href="/tags/LCD/">
+                        <span class="chip bg-color">LCD</span>
                     </a>
                     
                 </div>
@@ -1458,7 +1128,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">12.4k</span>&nbsp;字
+                class="white-color">12k</span>&nbsp;字
             
             
             
